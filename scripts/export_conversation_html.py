@@ -336,36 +336,34 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
 
     * {{ box-sizing: border-box; margin: 0; padding: 0; }}
 
-    html {{
+    html, body {{
       height: 100%;
-      overflow-x: hidden;
-      overflow-y: auto;
-      scroll-behavior: smooth;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* Entire site is locked to viewport, never scrolls */
     }}
 
     body {{
       font-family: var(--font-sans);
       background-color: var(--bg-app);
       color: var(--text-main);
-      min-height: 100%;
       display: flex;
       flex-direction: column;
-      overflow-x: hidden;
-      overflow-y: auto;
       -webkit-font-smoothing: antialiased;
     }}
 
-    /* Sticky Application Header */
+    /* Fixed Application Header */
     .app-header {{
-      position: sticky;
-      top: 0;
       height: 50px;
+      width: 100%;
       background-color: var(--bg-sidebar);
       border-bottom: 1px solid var(--border-subtle);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 1.25rem;
+      flex-shrink: 0;
       z-index: 1000;
       user-select: none;
     }}
@@ -437,16 +435,15 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
     .app-body {{
       display: flex;
       width: 100%;
-      min-height: calc(100vh - 50px);
+      height: calc(100vh - 50px);
+      overflow: hidden;
       position: relative;
     }}
 
-    /* Left Sidebar: Sticky Navigator */
+    /* Left Sidebar: Fixed Navigator */
     .sidebar {{
       width: 320px;
-      position: sticky;
-      top: 50px;
-      height: calc(100vh - 50px);
+      height: 100%;
       background-color: var(--bg-sidebar);
       border-right: 1px solid var(--border-subtle);
       display: flex;
@@ -454,11 +451,12 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       flex-shrink: 0;
       z-index: 900;
       overflow: hidden;
-      transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1), margin-left 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }}
 
     .sidebar.collapsed {{
       width: 0;
+      margin-left: -1px;
       border-right: none;
       visibility: hidden;
     }}
@@ -564,8 +562,13 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
     .chat-view {{
       flex: 1;
       min-width: 0;
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
       background: var(--bg-main);
       position: relative;
+      scroll-behavior: smooth;
     }}
 
     .chat-container {{
@@ -1340,8 +1343,12 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
 
     function scrollToTurn(turnId) {
       const el = document.getElementById('turn-' + turnId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const chatView = document.getElementById('chatView');
+      if (el && chatView) {
+        chatView.scrollTo({
+          top: el.offsetTop - 20,
+          behavior: 'smooth'
+        });
         document.querySelectorAll('.turn-nav-item').forEach(i => i.classList.remove('active'));
         const navItem = document.getElementById('nav-turn-' + turnId);
         if (navItem) navItem.classList.add('active');
@@ -1374,10 +1381,8 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       });
     });
 
-    // Auto highlight active turn in sidebar on scroll
-    let userHasScrolled = false;
-    window.addEventListener('scroll', () => { userHasScrolled = true; }, { once: true });
-
+    // Auto highlight active turn in sidebar on scroll without window jumping
+    const chatView = document.getElementById('chatView');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1386,13 +1391,17 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
           const navItem = document.getElementById('nav-turn-' + tid);
           if (navItem) {
             navItem.classList.add('active');
-            if (userHasScrolled) {
-              navItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            const list = document.getElementById('turnsList');
+            if (list) {
+              const itTop = navItem.offsetTop - list.offsetTop;
+              if (itTop < list.scrollTop || itTop > list.scrollTop + list.clientHeight - 60) {
+                list.scrollTop = itTop - list.clientHeight / 2;
+              }
             }
           }
         }
       });
-    }, { root: null, rootMargin: '-70px 0px -70% 0px', threshold: 0 });
+    }, { root: chatView, rootMargin: '-20px 0px -70% 0px', threshold: 0.05 });
 
     document.querySelectorAll('.turn-group').forEach(el => observer.observe(el));
   </script>
