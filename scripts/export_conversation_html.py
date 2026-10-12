@@ -321,6 +321,8 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
 
     html {{
       height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
       scroll-behavior: smooth;
     }}
 
@@ -329,14 +331,14 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       background-color: var(--bg-app);
       color: var(--text-main);
       min-height: 100%;
-      overflow-x: hidden;
-      overflow-y: auto !important;
       display: flex;
       flex-direction: column;
+      overflow-x: hidden;
+      overflow-y: auto;
       -webkit-font-smoothing: antialiased;
     }}
 
-    /* Top Navigation Shell */
+    /* Top Navigation Shell - Sticky Header */
     .app-header {{
       position: sticky;
       top: 0;
@@ -347,7 +349,7 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       align-items: center;
       justify-content: space-between;
       padding: 0 1.25rem;
-      z-index: 100;
+      z-index: 1000;
       user-select: none;
     }}
 
@@ -417,12 +419,12 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
     /* Main Container: 2-column layout */
     .app-body {{
       display: flex;
+      width: 100%;
       min-height: calc(100vh - 52px);
       position: relative;
-      width: 100%;
     }}
 
-    /* Left Sidebar: Session & Turns Navigator */
+    /* Left Sidebar: Sticky Navigator */
     .sidebar {{
       width: 320px;
       position: sticky;
@@ -432,13 +434,16 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       border-right: 1px solid var(--border-subtle);
       display: flex;
       flex-direction: column;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       flex-shrink: 0;
-      z-index: 20;
+      z-index: 900;
+      overflow: hidden;
+      transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }}
 
     .sidebar.collapsed {{
-      display: none;
+      width: 0;
+      border-right: none;
+      visibility: hidden;
     }}
 
     .sidebar-header {{
@@ -567,44 +572,10 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       position: relative;
     }}
 
-    .floating-scroll-controls {{
-      position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      z-index: 200;
-    }}
-
-    .float-btn {{
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-main);
-      box-shadow: 0 4px 14px rgba(0,0,0,0.4);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-      font-weight: 700;
-      transition: all 0.15s ease;
-      user-select: none;
-    }}
-
-    .float-btn:hover {{
-      background: var(--bg-sidebar-hover);
-      border-color: var(--accent-blue);
-      transform: translateY(-2px);
-    }}
-
     .chat-container {{
       max-width: 880px;
       margin: 0 auto;
-      padding: 2rem 1.5rem 5rem 1.5rem;
+      padding: 2rem 1.5rem 8rem 1.5rem;
       display: flex;
       flex-direction: column;
       gap: 2.5rem;
@@ -615,7 +586,7 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
-      scroll-margin-top: 2rem;
+      scroll-margin-top: 72px;
     }}
 
     .turn-divider {{
@@ -1355,9 +1326,7 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
     function scrollToTurn(turnId) {
       const el = document.getElementById('turn-' + turnId);
       if (el) {
-        const yOffset = -70;
-        const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-        window.scrollTo({ top: y, behavior: 'smooth' });
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
         document.querySelectorAll('.turn-nav-item').forEach(i => i.classList.remove('active'));
         const navItem = document.getElementById('nav-turn-' + turnId);
         if (navItem) navItem.classList.add('active');
@@ -1391,6 +1360,9 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
     });
 
     // IntersectionObserver to highlight active turn in sidebar as user scrolls
+    let userHasScrolled = false;
+    window.addEventListener('scroll', () => { userHasScrolled = true; }, { once: true });
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1399,20 +1371,16 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
           const navItem = document.getElementById('nav-turn-' + tid);
           if (navItem) {
             navItem.classList.add('active');
-            navItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            if (userHasScrolled) {
+              navItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
           }
         }
       });
-    }, { threshold: 0.1 });
+    }, { root: null, rootMargin: '-70px 0px -70% 0px', threshold: 0 });
 
     document.querySelectorAll('.turn-group').forEach(el => observer.observe(el));
   </script>
-
-  <!-- Floating Scroll Controls -->
-  <div class="floating-scroll-controls">
-    <button class="float-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Scroll to top">↑</button>
-    <button class="float-btn" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})" title="Scroll to bottom">↓</button>
-  </div>
 </body>
 </html>
 """)
