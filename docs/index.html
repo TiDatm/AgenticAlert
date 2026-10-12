@@ -53,12 +53,18 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    html {
+      height: 100%;
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: var(--font-sans);
       background-color: var(--bg-app);
       color: var(--text-main);
-      height: 100vh;
-      overflow: hidden;
+      min-height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto !important;
       display: flex;
       flex-direction: column;
       -webkit-font-smoothing: antialiased;
@@ -66,6 +72,8 @@
 
     /* Top Navigation Shell */
     .app-header {
+      position: sticky;
+      top: 0;
       height: 52px;
       background-color: var(--bg-sidebar);
       border-bottom: 1px solid var(--border-subtle);
@@ -73,7 +81,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 1.25rem;
-      z-index: 50;
+      z-index: 100;
       user-select: none;
     }
 
@@ -143,26 +151,28 @@
     /* Main Container: 2-column layout */
     .app-body {
       display: flex;
-      flex: 1;
-      height: calc(100vh - 52px);
-      overflow: hidden;
+      min-height: calc(100vh - 52px);
+      position: relative;
+      width: 100%;
     }
 
     /* Left Sidebar: Session & Turns Navigator */
     .sidebar {
       width: 320px;
+      position: sticky;
+      top: 52px;
+      height: calc(100vh - 52px);
       background-color: var(--bg-sidebar);
       border-right: 1px solid var(--border-subtle);
       display: flex;
       flex-direction: column;
-      transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       flex-shrink: 0;
+      z-index: 20;
     }
 
     .sidebar.collapsed {
-      width: 0;
-      border-right: none;
-      visibility: hidden;
+      display: none;
     }
 
     .sidebar-header {
@@ -286,11 +296,43 @@
     /* Main Chat Stream */
     .chat-view {
       flex: 1;
-      height: 100%;
-      overflow-y: auto;
-      scroll-behavior: smooth;
+      min-width: 0;
       background: var(--bg-main);
       position: relative;
+    }
+
+    .floating-scroll-controls {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      z-index: 200;
+    }
+
+    .float-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+
+    .float-btn:hover {
+      background: var(--bg-sidebar-hover);
+      border-color: var(--accent-blue);
+      transform: translateY(-2px);
     }
 
     .chat-container {
@@ -101480,7 +101522,9 @@ Last progress: never
     function scrollToTurn(turnId) {
       const el = document.getElementById('turn-' + turnId);
       if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const yOffset = -70;
+        const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
         document.querySelectorAll('.turn-nav-item').forEach(i => i.classList.remove('active'));
         const navItem = document.getElementById('nav-turn-' + turnId);
         if (navItem) navItem.classList.add('active');
@@ -101526,9 +101570,15 @@ Last progress: never
           }
         }
       });
-    }, { root: document.getElementById('chatView'), threshold: 0.2 });
+    }, { threshold: 0.1 });
 
     document.querySelectorAll('.turn-group').forEach(el => observer.observe(el));
   </script>
+
+  <!-- Floating Scroll Controls -->
+  <div class="floating-scroll-controls">
+    <button class="float-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Scroll to top">↑</button>
+    <button class="float-btn" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})" title="Scroll to bottom">↓</button>
+  </div>
 </body>
 </html>
