@@ -1,6 +1,10 @@
 """
-Native Antigravity Chat Interactive Conversation Exporter
-Parses Antigravity transcript JSONL and renders a native-fidelity Antigravity IDE chat experience.
+Native Antigravity Chat Interactive Conversation Exporter (v3)
+Renders an authentic Antigravity IDE chat experience with:
+1. Antigravity process timeline (Thought for Xs, Edited +X -Y, Analyzed #LX-Y, Command summaries with hexagon icons)
+2. Robust placeholder-based markdown & table parser (prevents unclosed tags or table squishing)
+3. Universal natural window scrolling with sticky header and sticky sidebar
+4. Zero system metadata / prompt slop
 """
 
 import json
@@ -14,14 +18,14 @@ from datetime import datetime
 def clean_user_prompt(raw: str) -> str:
     if not raw:
         return ""
-    # Extract <USER_REQUEST>...</USER_REQUEST> if wrapped
+    # Extract <USER_REQUEST>...</USER_REQUEST> if present
     match = re.search(r'<USER_REQUEST>\s*([\s\S]*?)\s*</USER_REQUEST>', raw)
     if match:
         text = match.group(1)
     else:
         text = raw
         
-    # Strip metadata, system instructions, and slash command prompts
+    # Strip metadata, system instructions, and slash command templates
     text = re.sub(r'<ADDITIONAL_METADATA>[\s\S]*?</ADDITIONAL_METADATA>', '', text)
     text = re.sub(r'<USER_SETTINGS_CHANGE>[\s\S]*?</USER_SETTINGS_CHANGE>', '', text)
     text = re.sub(r'<[A-Z_]+>[\s\S]*?</[A-Z_]+>', '', text)
@@ -34,37 +38,86 @@ def format_timestamp(ts_str: str) -> str:
     if not ts_str:
         return ""
     try:
-        # e.g. 2026-10-10T14:15:43Z -> Oct 10, 14:15
         dt = datetime.fromisoformat(ts_str.replace('Z', '+00:00'))
         return dt.strftime("%b %d, %H:%M")
     except Exception:
         return ts_str[:16].replace('T', ' ')
 
-def parse_markdown(text: str) -> str:
+def get_file_icon(filename: str) -> str:
+    if filename.endswith('.py'):
+        return '🐍'
+    elif filename.endswith(('.html', '.htm')):
+        return '🌐'
+    elif filename.endswith(('.json', '.geojson')):
+        return '📦'
+    elif filename.endswith('.md'):
+        return '📝'
+    elif filename.endswith('.ipynb'):
+        return '📓'
+    elif filename.endswith(('.png', '.jpg', '.svg')):
+        return '🖼️'
+    return '📄'
+
+def render_markdown(text: str) -> str:
     if not text:
         return ""
-    
-    escaped = html.escape(text)
-    
-    # Code blocks ```lang ... ```
-    def format_code(match):
-        lang = match.group(1).strip() or "text"
-        code = match.group(2)
-        return (
+        
+    code_blocks = []
+    def save_code(m):
+        lang = m.group(1).strip() or "text"
+        code = m.group(2)
+        escaped_code = html.escape(code)
+        idx = len(code_blocks)
+        html_code = (
             f'<div class="code-block">'
             f'  <div class="code-header">'
             f'    <span class="code-lang">{lang}</span>'
             f'    <button class="copy-btn" onclick="copyCode(this)">Copy</button>'
             f'  </div>'
-            f'  <pre><code>{code}</code></pre>'
+            f'  <pre><code>{escaped_code}</code></pre>'
             f'</div>'
         )
-    escaped = re.sub(r'```([a-zA-Z0-9_\-\+]*)\n([\s\S]*?)```', format_code, escaped)
+        code_blocks.append(html_code)
+        return f"___CODE_BLOCK_{idx}___"
+        
+    # 1. Protect code blocks
+    text = re.sub(r'```([a-zA-Z0-9_\-\+]*)\n([\s\S]*?)```', save_code, text)
     
-    # Inline code `code`
-    escaped = re.sub(r'`([^`\n]+)`', r'<code class="inline-code">\1</code>', escaped)
+    # 2. Protect and render tables
+    tables = []
+    def save_table(m):
+        raw_table = m.group(0).strip()
+        lines = [l.strip() for l in raw_table.split('\n') if l.strip()]
+        if len(lines) < 2:
+            return raw_table
+        headers = [c.strip() for c in lines[0].strip('|').split('|')]
+        body_rows = []
+        for l in lines[1:]:
+            if re.match(r'^[\|\s\:\-]+$', l):
+                continue
+            cells = [c.strip() for c in l.strip('|').split('|')]
+            body_rows.append(cells)
+            
+        h_html = "<tr>" + "".join(f"<th>{html.escape(h)}</th>" for h in headers) + "</tr>"
+        b_html = "".join("<tr>" + "".join(f"<td>{html.escape(c)}</td>" for c in r) + "</tr>" for r in body_rows)
+        idx = len(tables)
+        t_html = f'<div class="table-wrapper"><table class="chat-table"><thead>{h_html}</thead><tbody>{b_html}</tbody></table></div>'
+        tables.append(t_html)
+        return f"___TABLE_{idx}___"
+        
+    table_pattern = re.compile(r'((?:^\|.+?\|$\n?){2,})', re.MULTILINE)
+    text = table_pattern.sub(save_table, text)
     
-    # GitHub Alert Callouts: > [!NOTE], > [!TIP], > [!IMPORTANT], > [!WARNING], > [!CAUTION]
+    # 3. HTML escape remaining text
+    text = html.escape(text)
+    
+    # 4. Links: [text](url)
+    text = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2" target="_blank" class="chat-link">\1</a>', text)
+    
+    # 5. Inline code `code`
+    text = re.sub(r'`([^`\n]+)`', r'<code class="inline-code">\1</code>', text)
+    
+    # 6. GitHub Alert Callouts
     alert_patterns = [
         (r'&gt;\s*\[!NOTE\]\s*([\s\S]*?)(?=(?:\n\n|\Z))', 'note', 'Note'),
         (r'&gt;\s*\[!TIP\]\s*([\s\S]*?)(?=(?:\n\n|\Z))', 'tip', 'Tip'),
@@ -81,57 +134,55 @@ def parse_markdown(text: str) -> str:
                 f'  <div class="alert-body">{body}</div>'
                 f'</div>'
             )
-        escaped = re.sub(pattern, replace_alert, escaped)
+        text = re.sub(pattern, replace_alert, text)
     
-    # Blockquotes &gt; text
-    escaped = re.sub(r'^&gt;\s+(.*)$', r'<blockquote>\1</blockquote>', escaped, flags=re.MULTILINE)
+    # 7. Blockquotes
+    text = re.sub(r'^&gt;\s+(.*)$', r'<blockquote>\1</blockquote>', text, flags=re.MULTILINE)
     
-    # Bold **text**
-    escaped = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', escaped)
+    # 8. Bold & Italic
+    text = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', text)
+    text = re.sub(r'(?<!\*)\*([^*]+)\*(?!\*)', r'<em>\1</em>', text)
     
-    # Italic *text*
-    escaped = re.sub(r'(?<!\*)\*([^*]+)\*(?!\*)', r'<em>\1</em>', escaped)
+    # 9. Headers
+    text = re.sub(r'^#### (.*)$', r'<h4>\1</h4>', text, flags=re.MULTILINE)
+    text = re.sub(r'^### (.*)$', r'<h3>\1</h3>', text, flags=re.MULTILINE)
+    text = re.sub(r'^## (.*)$', r'<h2>\1</h2>', text, flags=re.MULTILINE)
+    text = re.sub(r'^# (.*)$', r'<h1>\1</h1>', text, flags=re.MULTILINE)
     
-    # Headers # H1, ## H2, ### H3, #### H4
-    escaped = re.sub(r'^#### (.*)$', r'<h4>\1</h4>', escaped, flags=re.MULTILINE)
-    escaped = re.sub(r'^### (.*)$', r'<h3>\1</h3>', escaped, flags=re.MULTILINE)
-    escaped = re.sub(r'^## (.*)$', r'<h2>\1</h2>', escaped, flags=re.MULTILINE)
-    escaped = re.sub(r'^# (.*)$', r'<h1>\1</h1>', escaped, flags=re.MULTILINE)
+    # 10. Lists
+    text = re.sub(r'^\* (.*)$', r'<li class="bullet-item">\1</li>', text, flags=re.MULTILINE)
+    text = re.sub(r'^- (.*)$', r'<li class="bullet-item">\1</li>', text, flags=re.MULTILINE)
+    text = re.sub(r'^\d+\.\s+(.*)$', r'<li class="num-item">\1</li>', text, flags=re.MULTILINE)
     
-    # Lists
-    escaped = re.sub(r'^\* (.*)$', r'<li class="bullet-item">\1</li>', escaped, flags=re.MULTILINE)
-    escaped = re.sub(r'^- (.*)$', r'<li class="bullet-item">\1</li>', escaped, flags=re.MULTILINE)
-    escaped = re.sub(r'^\d+\.\s+(.*)$', r'<li class="num-item">\1</li>', escaped, flags=re.MULTILINE)
+    # 11. Paragraphs & Linebreaks
+    text = text.replace('\n\n', '<p class="chat-p"></p>').replace('\n', '<br>')
     
-    # Convert standard paragraphs / breaks outside code-block
-    parts = escaped.split('<div class="code-block">')
-    out_parts = []
-    for i, p in enumerate(parts):
-        if i == 0:
-            out_parts.append(p.replace('\n\n', '<p class="chat-p"></p>').replace('\n', '<br>'))
-        else:
-            sub = p.split('</pre></div>')
-            code_block_part = sub[0] + '</pre></div>'
-            rest = sub[1] if len(sub) > 1 else ''
-            rest_formatted = rest.replace('\n\n', '<p class="chat-p"></p>').replace('\n', '<br>')
-            out_parts.append(code_block_part + rest_formatted)
-            
-    return ''.join(out_parts)
+    # 12. Restore protected blocks
+    for idx, c_html in enumerate(code_blocks):
+        text = text.replace(f"___CODE_BLOCK_{idx}___", c_html)
+    for idx, t_html in enumerate(tables):
+        text = text.replace(f"___TABLE_{idx}___", t_html)
+        
+    return text
 
-def format_diff(diff_text: str) -> str:
+def format_diff(diff_text: str) -> tuple[str, int, int]:
     lines = diff_text.strip().split('\n')
     formatted = []
+    adds = 0
+    dels = 0
     for line in lines:
         escaped_line = html.escape(line)
         if line.startswith('+') and not line.startswith('+++'):
             formatted.append(f'<div class="diff-line diff-add">{escaped_line}</div>')
+            adds += 1
         elif line.startswith('-') and not line.startswith('---'):
             formatted.append(f'<div class="diff-line diff-del">{escaped_line}</div>')
+            dels += 1
         elif line.startswith('@@'):
             formatted.append(f'<div class="diff-line diff-hunk">{escaped_line}</div>')
         else:
             formatted.append(f'<div class="diff-line diff-ctx">{escaped_line}</div>')
-    return '\n'.join(formatted)
+    return '\n'.join(formatted), adds, dels
 
 def load_and_structure_transcript(transcript_path: str):
     turns = []
@@ -157,61 +208,56 @@ def load_and_structure_transcript(transcript_path: str):
                     'created_at': step.get('created_at', ''),
                     'time_formatted': format_timestamp(step.get('created_at', '')),
                     'user_prompt': clean_user,
-                    'events': []  # list of {type: 'thought'|'tool'|'response', data: ...}
+                    'processes': [],      # ordered list of process items (thoughts, tools)
+                    'responses': []       # list of model prose responses
                 }
             elif current_turn is not None:
-                # 1. Thought
+                # 1. Thought Process Item
                 thinking = step.get('thinking')
                 if thinking and thinking.strip():
-                    current_turn['events'].append({
-                        'type': 'thought',
+                    th_text = thinking.strip()
+                    est_seconds = max(2, min(45, len(th_text) // 120))
+                    current_turn['processes'].append({
+                        'kind': 'thought',
                         'step_index': step.get('step_index'),
-                        'text': thinking.strip()
+                        'label': f'Thought for {est_seconds}s',
+                        'text': th_text
                     })
                 
-                # 2. Tool calls
+                # 2. Tool Calls
                 tool_calls = step.get('tool_calls', [])
                 if tool_calls:
                     for tc in tool_calls:
                         name = tc.get('name', 'tool')
                         args = tc.get('args', {})
                         if isinstance(args, str):
-                            try:
-                                args = json.loads(args)
-                            except:
-                                pass
-                        current_turn['events'].append({
-                            'type': 'tool',
+                            try: args = json.loads(args)
+                            except: pass
+                        current_turn['processes'].append({
+                            'kind': 'tool',
                             'step_index': step.get('step_index'),
                             'name': name,
                             'args': args,
                             'result': ''
                         })
                 
-                # 3. Tool results (GENERIC)
+                # 3. Tool Results (GENERIC)
                 if stype == 'GENERIC':
                     content = step.get('content', '')
-                    # Match with previous tool event without result
                     matched = False
-                    for ev in reversed(current_turn['events']):
-                        if ev['type'] == 'tool' and not ev.get('result'):
-                            ev['result'] = content
+                    for p in reversed(current_turn['processes']):
+                        if p['kind'] == 'tool' and not p.get('result'):
+                            p['result'] = content
                             matched = True
                             break
                     if not matched and content:
-                        current_turn['events'].append({
-                            'type': 'response',
-                            'text': content
-                        })
+                        current_turn['responses'].append(content)
                         
-                # 4. Model assistant text response
+                # 4. Model Text Responses
                 if stype == 'PLANNER_RESPONSE':
                     content = step.get('content')
                     if content and content.strip():
-                        current_turn['events'].append({
-                            'type': 'response',
-                            'text': content.strip()
-                        })
+                        current_turn['responses'].append(content.strip())
                         
     if current_turn:
         turns.append(current_turn)
@@ -222,7 +268,7 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
     html_lines = []
     
     # Antigravity Blue Delta Icon SVG
-    antigravity_logo_svg = """<svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    antigravity_logo_svg = """<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M12 2L2 19.5H8.5L12 13L15.5 19.5H22L12 2Z" fill="url(#ag-grad)" />
   <path d="M12 7.5L8 15.5H16L12 7.5Z" fill="#131418" />
   <defs>
@@ -231,37 +277,6 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       <stop offset="1" stop-color="#1f6feb" />
     </linearGradient>
   </defs>
-</svg>"""
-
-    # Sparkle / Thinking icon SVG
-    sparkle_svg = """<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-</svg>"""
-
-    # Chevron SVG
-    chevron_svg = """<svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <polyline points="6 9 12 15 18 9"></polyline>
-</svg>"""
-
-    # Terminal icon SVG
-    terminal_svg = """<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <polyline points="4 17 10 11 4 5"></polyline>
-  <line x1="12" y1="19" x2="20" y2="19"></line>
-</svg>"""
-
-    # Code/Edit file icon SVG
-    edit_file_svg = """<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-  <polyline points="14 2 14 8 20 8"></polyline>
-  <line x1="16" y1="13" x2="8" y2="13"></line>
-  <line x1="16" y1="17" x2="8" y2="17"></line>
-</svg>"""
-
-    # Question icon SVG
-    question_svg = """<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <circle cx="12" cy="12" r="10"></circle>
-  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-  <line x1="12" y1="17" x2="12.01" y2="17"></line>
 </svg>"""
 
     html_lines.append(f"""<!DOCTYPE html>
@@ -281,6 +296,7 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       --bg-card: #161820;
       --bg-card-inner: #111217;
       --bg-code: #0b0c0f;
+      --bg-process-hover: rgba(255, 255, 255, 0.04);
       --border-subtle: #252834;
       --border-focus: #388bfd;
       --text-main: #f0f6fc;
@@ -305,6 +321,7 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       --bg-card: #ffffff;
       --bg-card-inner: #f8f9fa;
       --bg-code: #f3f4f6;
+      --bg-process-hover: rgba(0, 0, 0, 0.03);
       --border-subtle: #e1e4e8;
       --border-focus: #0969da;
       --text-main: #1f2328;
@@ -338,11 +355,11 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       -webkit-font-smoothing: antialiased;
     }}
 
-    /* Top Navigation Shell - Sticky Header */
+    /* Sticky Application Header */
     .app-header {{
       position: sticky;
       top: 0;
-      height: 52px;
+      height: 50px;
       background-color: var(--bg-sidebar);
       border-bottom: 1px solid var(--border-subtle);
       display: flex;
@@ -416,11 +433,11 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       border-color: var(--accent-blue);
     }}
 
-    /* Main Container: 2-column layout */
+    /* Body 2-Column Shell */
     .app-body {{
       display: flex;
       width: 100%;
-      min-height: calc(100vh - 52px);
+      min-height: calc(100vh - 50px);
       position: relative;
     }}
 
@@ -428,8 +445,8 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
     .sidebar {{
       width: 320px;
       position: sticky;
-      top: 52px;
-      height: calc(100vh - 52px);
+      top: 50px;
+      height: calc(100vh - 50px);
       background-color: var(--bg-sidebar);
       border-right: 1px solid var(--border-subtle);
       display: flex;
@@ -463,39 +480,24 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       color: var(--text-dim);
     }}
 
-    .search-box {{
-      position: relative;
-      margin-bottom: 0.4rem;
-    }}
-
     .search-box input {{
       width: 100%;
       background: var(--bg-app);
       border: 1px solid var(--border-subtle);
       border-radius: 6px;
-      padding: 0.4rem 0.65rem 0.4rem 1.8rem;
+      padding: 0.4rem 0.65rem;
       font-size: 0.8rem;
       color: var(--text-main);
       outline: none;
       font-family: var(--font-sans);
     }}
 
-    .search-box input:focus {{
-      border-color: var(--border-focus);
-    }}
-
-    .search-icon-pos {{
-      position: absolute;
-      left: 0.55rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-dim);
-      font-size: 0.75rem;
-    }}
+    .search-box input:focus {{ border-color: var(--border-focus); }}
 
     .turns-list {{
       flex: 1;
       overflow-y: auto;
+      overflow-x: hidden;
       padding: 0.5rem 0.6rem;
       display: flex;
       flex-direction: column;
@@ -503,7 +505,7 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
     }}
 
     .turn-nav-item {{
-      padding: 0.6rem 0.75rem;
+      padding: 0.55rem 0.75rem;
       border-radius: 6px;
       cursor: pointer;
       display: flex;
@@ -515,10 +517,7 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       user-select: none;
     }}
 
-    .turn-nav-item:hover {{
-      background: var(--bg-sidebar-hover);
-    }}
-
+    .turn-nav-item:hover {{ background: var(--bg-sidebar-hover); }}
     .turn-nav-item.active {{
       background: var(--bg-sidebar-active);
       border-color: rgba(56, 139, 253, 0.3);
@@ -533,10 +532,7 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       font-family: var(--font-mono);
     }}
 
-    .turn-nav-num {{
-      color: var(--accent-blue);
-      font-weight: 600;
-    }}
+    .turn-nav-num {{ color: var(--accent-blue); font-weight: 600; }}
 
     .turn-nav-snippet {{
       font-size: 0.82rem;
@@ -581,11 +577,10 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       gap: 2.5rem;
     }}
 
-    /* Turn Group */
     .turn-group {{
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1.25rem;
       scroll-margin-top: 72px;
     }}
 
@@ -643,7 +638,7 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       flex-shrink: 0;
     }}
 
-    /* Assistant Message Column */
+    /* Assistant Stream */
     .assistant-row {{
       display: flex;
       gap: 1rem;
@@ -651,8 +646,8 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
     }}
 
     .assistant-avatar {{
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       border-radius: 8px;
       background: #191c24;
       border: 1px solid var(--border-subtle);
@@ -667,154 +662,150 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 1.1rem;
+      gap: 0.85rem;
       overflow: hidden;
     }}
 
-    /* Thinking Process Accordion */
-    .thinking-accordion {{
-      background: rgba(163, 113, 247, 0.05);
-      border: 1px solid rgba(163, 113, 247, 0.2);
+    /* ANTIGRAVITY PROCESS TIMELINE (Matches Screenshot 2) */
+    .process-timeline {{
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid var(--border-subtle);
       border-radius: 8px;
-      overflow: hidden;
-      transition: border-color 0.15s ease;
+      padding: 0.35rem 0.45rem;
+      margin-bottom: 0.5rem;
     }}
 
-    .thinking-accordion summary {{
-      padding: 0.5rem 0.85rem;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--accent-purple);
+    .process-item {{
+      border-radius: 6px;
+      overflow: hidden;
+      transition: background 0.12s ease;
+    }}
+
+    .process-item[open] {{
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      margin: 0.25rem 0;
+    }}
+
+    .process-summary {{
+      padding: 0.32rem 0.6rem;
+      font-size: 0.82rem;
+      font-family: var(--font-sans);
+      color: var(--text-muted);
       cursor: pointer;
       user-select: none;
       display: flex;
       align-items: center;
       justify-content: space-between;
       list-style: none;
+      border-radius: 5px;
+      transition: background 0.1s ease;
     }}
 
-    .thinking-accordion summary::-webkit-details-marker {{ display: none; }}
+    .process-summary::-webkit-details-marker {{ display: none; }}
+    .process-summary:hover {{ background: var(--bg-process-hover); color: var(--text-main); }}
 
-    .thinking-summary-left {{
+    .process-left {{
       display: flex;
       align-items: center;
       gap: 0.45rem;
-    }}
-
-    .thinking-body {{
-      padding: 0.85rem 1rem;
-      font-size: 0.83rem;
-      color: var(--text-muted);
-      border-top: 1px solid rgba(163, 113, 247, 0.12);
-      line-height: 1.6;
-      white-space: pre-wrap;
-      font-family: var(--font-sans);
-      max-height: 480px;
-      overflow-y: auto;
-    }}
-
-    /* Tool Call Card Widget */
-    .tool-widget {{
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: 8px;
       overflow: hidden;
-      margin: 0.35rem 0;
-    }}
-
-    .tool-widget summary {{
-      padding: 0.55rem 0.85rem;
-      font-size: 0.82rem;
-      cursor: pointer;
-      user-select: none;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      list-style: none;
-      background: var(--bg-card-inner);
-    }}
-
-    .tool-widget summary::-webkit-details-marker {{ display: none; }}
-
-    .tool-summary-left {{
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-      overflow: hidden;
-      text-overflow: ellipsis;
       white-space: nowrap;
+      text-overflow: ellipsis;
     }}
 
-    .tool-pill {{
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      padding: 0.15rem 0.45rem;
-      border-radius: 4px;
-      background: rgba(56, 139, 253, 0.15);
-      color: var(--accent-blue);
-      font-weight: 600;
+    .process-action {{
+      color: var(--text-dim);
+      font-weight: 400;
     }}
 
-    .tool-desc {{
-      font-size: 0.8rem;
+    .process-file {{
       color: var(--text-main);
       font-weight: 500;
-    }}
-
-    .tool-body {{
-      border-top: 1px solid var(--border-subtle);
-      padding: 0.75rem 1rem;
-      background: var(--bg-code);
       font-family: var(--font-mono);
-      font-size: 0.78rem;
-      overflow-x: auto;
+      font-size: 0.8rem;
     }}
 
-    .tool-section-label {{
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-dim);
-      margin-bottom: 0.4rem;
+    .diff-add-pill {{
+      color: var(--accent-green);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
       font-weight: 600;
+      margin-left: 0.2rem;
     }}
 
-    /* Terminal Window inside run_command */
-    .terminal-window {{
+    .diff-del-pill {{
+      color: var(--accent-red);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: 0.15rem;
+    }}
+
+    .line-range-pill {{
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      margin-left: 0.2rem;
+    }}
+
+    .process-right {{
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }}
+
+    .process-status-icon {{
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }}
+
+    .process-chevron {{
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      transition: transform 0.15s ease;
+    }}
+
+    .process-item[open] .process-chevron {{
+      transform: rotate(90deg);
+    }}
+
+    .process-drawer {{
+      padding: 0.75rem 0.85rem;
+      background: var(--bg-card-inner);
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+    }}
+
+    /* Terminal Widget */
+    .terminal-box {{
       background: #090a0d;
       border: 1px solid #1f232c;
       border-radius: 6px;
       overflow: hidden;
-      margin-top: 0.4rem;
     }}
 
-    .terminal-top {{
+    .terminal-head {{
       background: #141720;
       padding: 0.35rem 0.65rem;
       display: flex;
       align-items: center;
       gap: 0.4rem;
       border-bottom: 1px solid #1f232c;
-    }}
-
-    .terminal-dot {{
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-    }}
-
-    .terminal-cmd {{
-      color: var(--text-main);
+      font-size: 0.75rem;
       font-family: var(--font-mono);
-      font-size: 0.78rem;
-      margin-left: 0.5rem;
-      word-break: break-all;
+      color: var(--text-main);
     }}
 
-    .terminal-output {{
+    .terminal-body {{
       padding: 0.75rem;
       color: #c9d1d9;
       font-size: 0.78rem;
@@ -824,8 +815,8 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       line-height: 1.5;
     }}
 
-    /* Diff Lines */
-    .diff-container {{
+    /* Diff View */
+    .diff-box {{
       background: #090a0d;
       border: 1px solid #1f232c;
       border-radius: 6px;
@@ -837,93 +828,69 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       overflow-y: auto;
     }}
 
-    .diff-line {{
-      padding: 0.1rem 0.75rem;
-      white-space: pre-wrap;
-    }}
-
+    .diff-line {{ padding: 0.1rem 0.75rem; white-space: pre-wrap; }}
     .diff-add {{ background: rgba(46, 160, 67, 0.15); color: #3fb950; }}
     .diff-del {{ background: rgba(248, 81, 73, 0.15); color: #f85149; }}
     .diff-hunk {{ background: rgba(163, 113, 247, 0.1); color: #a371f7; }}
     .diff-ctx {{ color: #8b949e; }}
 
-    /* Question Pill Card */
-    .question-card {{
+    /* Question Widget */
+    .question-box {{
       background: var(--bg-card);
       border: 1px solid rgba(56, 139, 253, 0.25);
       border-radius: 8px;
-      padding: 1rem 1.25rem;
+      padding: 0.85rem 1rem;
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
-    }}
-
-    .question-title {{
-      font-weight: 600;
-      color: var(--text-main);
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-    }}
-
-    .question-options {{
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }}
-
-    .question-option {{
-      padding: 0.55rem 0.85rem;
-      border-radius: 6px;
-      background: var(--bg-card-inner);
-      border: 1px solid var(--border-subtle);
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
       gap: 0.5rem;
     }}
 
-    .question-option.selected {{
+    .q-opt {{
+      padding: 0.45rem 0.75rem;
+      border-radius: 6px;
+      background: var(--bg-card-inner);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }}
+
+    .q-opt.selected {{
       background: rgba(63, 185, 80, 0.12);
       border-color: rgba(63, 185, 80, 0.4);
       color: var(--text-main);
       font-weight: 500;
     }}
 
-    .selected-badge {{
-      margin-left: auto;
-      font-size: 0.7rem;
-      padding: 0.1rem 0.4rem;
+    .q-badge {{
+      font-size: 0.68rem;
+      padding: 0.1rem 0.35rem;
       background: var(--accent-green);
       color: #fff;
       border-radius: 4px;
-      font-family: var(--font-mono);
     }}
 
-    /* Markdown prose in Assistant Text */
+    /* Markdown Prose */
     .prose {{
       font-size: 0.95rem;
       line-height: 1.68;
       color: var(--text-main);
     }}
 
-    .prose p.chat-p {{ margin: 0.8rem 0; }}
+    .prose p.chat-p {{ margin: 0.75rem 0; }}
     .prose h1, .prose h2, .prose h3, .prose h4 {{
       margin: 1.25rem 0 0.5rem 0;
       color: var(--text-main);
       font-weight: 600;
     }}
-    .prose h1 {{ font-size: 1.35rem; }}
-    .prose h2 {{ font-size: 1.2rem; }}
+    .prose h1 {{ font-size: 1.3rem; }}
+    .prose h2 {{ font-size: 1.15rem; }}
     .prose h3 {{ font-size: 1.05rem; }}
     .prose h4 {{ font-size: 0.95rem; }}
 
-    .prose ul, .prose ol {{
-      margin: 0.6rem 0 0.6rem 1.4rem;
-    }}
-
+    .prose ul, .prose ol {{ margin: 0.5rem 0 0.5rem 1.4rem; }}
     .prose li {{ margin-bottom: 0.35rem; }}
 
     .inline-code {{
@@ -933,6 +900,12 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       font-size: 0.85em;
       padding: 0.15rem 0.35rem;
       border-radius: 4px;
+    }}
+
+    .chat-link {{
+      color: var(--accent-blue);
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }}
 
     .code-block {{
@@ -963,13 +936,9 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       padding: 0.15rem 0.45rem;
       font-size: 0.7rem;
       cursor: pointer;
-      font-family: var(--font-sans);
     }}
 
-    .copy-btn:hover {{
-      color: var(--text-main);
-      border-color: var(--text-muted);
-    }}
+    .copy-btn:hover {{ color: var(--text-main); border-color: var(--text-muted); }}
 
     .code-block pre {{
       padding: 0.85rem 1rem;
@@ -979,7 +948,41 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       line-height: 1.5;
     }}
 
-    /* GitHub Alert Styles */
+    /* Markdown Tables */
+    .table-wrapper {{
+      width: 100%;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }}
+
+    .chat-table {{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      overflow: hidden;
+    }}
+
+    .chat-table th {{
+      background: var(--bg-card-inner);
+      padding: 0.65rem 0.85rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-subtle);
+      font-weight: 600;
+      color: var(--text-main);
+    }}
+
+    .chat-table td {{
+      padding: 0.65rem 0.85rem;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+    }}
+
+    .chat-table tr:last-child td {{ border-bottom: none; }}
+
+    /* GitHub Alerts */
     .alert {{
       border-left: 3px solid;
       border-radius: 0 6px 6px 0;
@@ -987,36 +990,17 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       margin: 0.85rem 0;
       font-size: 0.9rem;
     }}
-
-    .alert-title {{
-      font-weight: 600;
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.3rem;
-    }}
-
+    .alert-title {{ font-weight: 600; font-size: 0.82rem; text-transform: uppercase; margin-bottom: 0.3rem; }}
     .alert-note {{ background: rgba(56, 139, 253, 0.08); border-color: var(--accent-blue); }}
     .alert-note .alert-title {{ color: var(--accent-blue); }}
-
     .alert-tip {{ background: rgba(63, 185, 80, 0.08); border-color: var(--accent-green); }}
     .alert-tip .alert-title {{ color: var(--accent-green); }}
-
     .alert-important {{ background: rgba(163, 113, 247, 0.08); border-color: var(--accent-purple); }}
     .alert-important .alert-title {{ color: var(--accent-purple); }}
-
     .alert-warning {{ background: rgba(210, 153, 34, 0.08); border-color: var(--accent-orange); }}
     .alert-warning .alert-title {{ color: var(--accent-orange); }}
-
     .alert-caution {{ background: rgba(248, 81, 73, 0.08); border-color: var(--accent-red); }}
     .alert-caution .alert-title {{ color: var(--accent-red); }}
-
-    blockquote {{
-      border-left: 3px solid var(--border-subtle);
-      padding-left: 0.85rem;
-      color: var(--text-muted);
-      margin: 0.75rem 0;
-    }}
 
     /* Media Embeds */
     .media-card {{
@@ -1026,16 +1010,13 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       overflow: hidden;
       margin: 0.85rem 0;
     }}
-
     .media-img {{
       width: 100%;
-      height: auto;
       max-height: 520px;
       object-fit: contain;
       background: #000;
       display: block;
     }}
-
     .media-caption {{
       padding: 0.5rem 0.85rem;
       font-size: 0.75rem;
@@ -1046,7 +1027,6 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       justify-content: space-between;
     }}
 
-    /* Scrollbar */
     ::-webkit-scrollbar {{ width: 6px; height: 6px; }}
     ::-webkit-scrollbar-track {{ background: transparent; }}
     ::-webkit-scrollbar-thumb {{ background: var(--border-subtle); border-radius: 4px; }}
@@ -1054,7 +1034,7 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
   </style>
 </head>
 <body>
-  <!-- Header Shell -->
+  <!-- Header -->
   <header class="app-header">
     <div class="header-left">
       <button id="sidebarToggleBtn" class="top-btn" onclick="toggleSidebar()" title="Toggle Sidebar">☰</button>
@@ -1066,14 +1046,13 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       <span style="font-size: 0.78rem; color: var(--text-muted); font-family: var(--font-mono); margin-left: 0.5rem;">Air Raid Alert Defense</span>
     </div>
     <div class="header-right">
-      <button id="toggleThoughtsBtn" class="top-btn" onclick="toggleAllThoughts()">{sparkle_svg} Thoughts</button>
-      <button id="toggleToolsBtn" class="top-btn" onclick="toggleAllTools()">{terminal_svg} Tools</button>
+      <button id="toggleThoughtsBtn" class="top-btn" onclick="toggleAllProcesses()">&gt;_ All Processes</button>
       <button id="themeToggleBtn" class="top-btn" onclick="toggleTheme()">🌓 Theme</button>
     </div>
   </header>
 
   <div class="app-body">
-    <!-- Left Navigation Drawer -->
+    <!-- Left Navigator Sidebar -->
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
         <div class="sidebar-title-row">
@@ -1081,48 +1060,43 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
           <span style="font-family: var(--font-mono);">{len(turns)} Turns</span>
         </div>
         <div class="search-box">
-          <span class="search-icon-pos">🔍</span>
-          <input type="text" id="turnSearchInput" placeholder="Filter conversation..." />
+          <input type="text" id="turnSearchInput" placeholder="Filter turns..." />
         </div>
       </div>
       <div class="turns-list" id="turnsList">
 """)
-    
-    # Sidebar Turn Items
+
+    # Render Sidebar Items
     for t in turns:
         tid = t['turn_id']
-        tool_count = sum(1 for ev in t['events'] if ev['type'] == 'tool')
-        thought_count = sum(1 for ev in t['events'] if ev['type'] == 'thought')
+        tool_count = sum(1 for p in t['processes'] if p['kind'] == 'tool')
+        thought_count = sum(1 for p in t['processes'] if p['kind'] == 'thought')
+        prompt_snippet = html.escape(t['user_prompt'][:90].replace('\n', ' '))
         
-        # User snippet preview
-        prompt_snippet = html.escape(t['user_prompt'][:100].replace('\n', ' '))
-        
-        meta_badges = []
+        badges = []
         if tool_count > 0:
-            meta_badges.append(f'<span class="tiny-badge">⚡ {tool_count}</span>')
+            badges.append(f'<span class="tiny-badge">⚡ {tool_count}</span>')
         if thought_count > 0:
-            meta_badges.append(f'<span class="tiny-badge">🧠 {thought_count}</span>')
+            badges.append(f'<span class="tiny-badge">🧠 {thought_count}</span>')
             
-        badges_html = "".join(meta_badges)
-        
         html_lines.append(f"""        <div class="turn-nav-item" id="nav-turn-{tid}" onclick="scrollToTurn({tid})">
           <div class="turn-nav-header">
             <span class="turn-nav-num">#{tid:02d}</span>
             <span>{t['time_formatted']}</span>
           </div>
           <div class="turn-nav-snippet">{prompt_snippet}</div>
-          <div class="turn-nav-meta">{badges_html}</div>
+          <div class="turn-nav-meta">{"".join(badges)}</div>
         </div>""")
 
     html_lines.append("""      </div>
     </aside>
 
-    <!-- Main Chat Feed Pane -->
+    <!-- Main Chat Feed -->
     <main class="chat-view" id="chatView">
       <div class="chat-container" id="chatContainer">
 """)
 
-    # Render each Turn
+    # Render each Conversation Turn
     for t in turns:
         tid = t['turn_id']
         user_clean = html.escape(t['user_prompt'])
@@ -1131,156 +1105,202 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
         <section class="turn-group" id="turn-{tid}" data-turn-id="{tid}">
           <div class="turn-divider">Turn #{tid} &bull; {t['time_formatted']}</div>
 
-          <!-- User Bubble -->
+          <!-- User Prompt -->
           <div class="user-row">
             <div class="user-bubble">{user_clean}</div>
             <div class="user-avatar">U</div>
           </div>
 
-          <!-- Assistant Content -->
+          <!-- Assistant Stream -->
           <div class="assistant-row">
             <div class="assistant-avatar">{antigravity_logo_svg}</div>
             <div class="assistant-content">
 """)
 
-        # Process Turn Events chronologically
-        for ev in t['events']:
-            ev_type = ev['type']
-            
-            # 1. Thought Process
-            if ev_type == 'thought':
-                text = ev['text']
-                char_count = len(text)
-                escaped_thought = html.escape(text)
-                html_lines.append(f"""              <details class="thinking-accordion">
-                <summary>
-                  <div class="thinking-summary-left">{sparkle_svg} <span>Thinking Process ({char_count:,} chars)</span></div>
-                  {chevron_svg}
-                </summary>
-                <div class="thinking-body">{escaped_thought}</div>
-              </details>""")
-
-            # 2. Tool Invocation
-            elif ev_type == 'tool':
-                tname = ev['name']
-                targs = ev['args'] if isinstance(ev['args'], dict) else {}
-                result_str = ev.get('result', '')
+        # Process Timeline (Matches Screenshot 2)
+        if t['processes']:
+            html_lines.append("""              <div class="process-timeline">""")
+            for p in t['processes']:
+                p_kind = p['kind']
                 
-                # Check tool specific rendering
-                if tname == 'ask_question':
-                    q_list = targs.get('questions', [])
-                    if isinstance(q_list, str):
-                        try: q_list = json.loads(q_list)
-                        except: q_list = []
-                        
-                    for q in q_list:
-                        q_text = html.escape(q.get('question', 'Question'))
-                        opts = q.get('options', [])
-                        
-                        # Find selected answer from result_str
-                        selected_idx = -1
-                        opt_htmls = []
-                        for idx, opt in enumerate(opts):
-                            is_sel = opt in result_str or f"A{idx+1}" in result_str or (idx == 0 and "Recommended" in result_str and "Recommended" in opt)
-                            sel_class = "selected" if is_sel else ""
-                            sel_badge = '<span class="selected-badge">✓ Selected</span>' if is_sel else ''
-                            opt_htmls.append(f'<div class="question-option {sel_class}"><span>{html.escape(opt)}</span>{sel_badge}</div>')
+                # 1. Thought item
+                if p_kind == 'thought':
+                    label = p['label']
+                    th_text = html.escape(p['text'])
+                    html_lines.append(f"""                <details class="process-item">
+                  <summary class="process-summary">
+                    <span class="process-left">
+                      <span class="process-action">{label}</span>
+                    </span>
+                    <span class="process-chevron">&rsaquo;</span>
+                  </summary>
+                  <div class="process-drawer" style="white-space: pre-wrap; color: var(--text-muted);">{th_text}</div>
+                </details>""")
+
+                # 2. Tool item
+                elif p_kind == 'tool':
+                    tname = p['name']
+                    targs = p['args'] if isinstance(p['args'], dict) else {}
+                    tresult = p.get('result', '')
+                    
+                    if tname == 'replace_file_content':
+                        tf = targs.get('TargetFile', '')
+                        fn = os.path.basename(tf)
+                        icon = get_file_icon(fn)
+                        diff_match = re.search(r'\[diff_block_start\]([\s\S]*?)\[diff_block_end\]', tresult)
+                        if diff_match:
+                            diff_html, adds, dels = format_diff(diff_match.group(1))
+                        else:
+                            diff_html = html.escape(tresult.strip())
+                            adds, dels = 1, 1
                             
-                        html_lines.append(f"""              <div class="question-card">
-                <div class="question-title">{question_svg} {q_text}</div>
-                <div class="question-options">{"".join(opt_htmls)}</div>
-              </div>""")
-
-                elif tname == 'run_command':
-                    cmd_line = targs.get('CommandLine', '')
-                    summary = targs.get('toolSummary', 'Terminal Command')
-                    exit_code_pill = '<span style="color: #3fb950;">✓ Exit 0</span>' if 'exited with code 0' in result_str else ''
-                    
-                    html_lines.append(f"""              <details class="tool-widget">
-                <summary>
-                  <div class="tool-summary-left">
-                    <span class="tool-pill">{terminal_svg} run_command</span>
-                    <span class="tool-desc">{html.escape(summary)}</span>
+                        html_lines.append(f"""                <details class="process-item">
+                  <summary class="process-summary">
+                    <span class="process-left">
+                      <span class="process-action">Edited</span>
+                      <span class="process-file">{icon} {html.escape(fn)}</span>
+                      <span class="diff-add-pill">+{adds}</span>
+                      <span class="diff-del-pill">-{dels}</span>
+                    </span>
+                    <span class="process-chevron">&rsaquo;</span>
+                  </summary>
+                  <div class="process-drawer">
+                    <div class="diff-box">{diff_html}</div>
                   </div>
-                  <div>{exit_code_pill} {chevron_svg}</div>
-                </summary>
-                <div class="tool-body">
-                  <div class="terminal-window">
-                    <div class="terminal-top">
-                      <span class="terminal-dot" style="background:#ff5f56;"></span>
-                      <span class="terminal-dot" style="background:#ffbd2e;"></span>
-                      <span class="terminal-dot" style="background:#27c93f;"></span>
-                      <span class="terminal-cmd">$ {html.escape(cmd_line)}</span>
-                    </div>
-                    <div class="terminal-output">{html.escape(result_str.strip())}</div>
-                  </div>
-                </div>
-              </details>""")
+                </details>""")
 
-                elif tname == 'replace_file_content':
-                    target_file = targs.get('TargetFile', '')
-                    file_base = os.path.basename(target_file)
-                    desc = targs.get('Description', 'Edit file')
-                    
-                    # Extract diff block
-                    diff_match = re.search(r'\[diff_block_start\]([\s\S]*?)\[diff_block_end\]', result_str)
-                    if diff_match:
-                        diff_content = format_diff(diff_match.group(1))
-                    else:
-                        diff_content = html.escape(result_str.strip())
+                    elif tname == 'write_to_file':
+                        tf = targs.get('TargetFile', '')
+                        fn = os.path.basename(tf)
+                        icon = get_file_icon(fn)
+                        code_cnt = targs.get('CodeContent', '')
+                        line_cnt = len(code_cnt.split('\n'))
                         
-                    html_lines.append(f"""              <details class="tool-widget">
-                <summary>
-                  <div class="tool-summary-left">
-                    <span class="tool-pill">{edit_file_svg} edit_file</span>
-                    <span class="tool-desc">{html.escape(file_base)} &mdash; <span style="color:var(--text-muted);font-weight:400;">{html.escape(desc)}</span></span>
+                        html_lines.append(f"""                <details class="process-item">
+                  <summary class="process-summary">
+                    <span class="process-left">
+                      <span class="process-action">Created</span>
+                      <span class="process-file">{icon} {html.escape(fn)}</span>
+                      <span class="diff-add-pill">+{line_cnt}</span>
+                    </span>
+                    <span class="process-chevron">&rsaquo;</span>
+                  </summary>
+                  <div class="process-drawer">
+                    <pre style="white-space: pre-wrap; max-height: 350px; overflow-y: auto;">{html.escape(code_cnt[:2500])}</pre>
                   </div>
-                  {chevron_svg}
-                </summary>
-                <div class="tool-body">
-                  <div class="diff-container">{diff_content}</div>
-                </div>
-              </details>""")
+                </details>""")
 
-                else:
-                    summary = targs.get('toolSummary', tname)
-                    arg_dump = html.escape(json.dumps(targs, indent=2))
-                    res_dump = html.escape(result_str[:2500] + ('\n... [truncated]' if len(result_str) > 2500 else ''))
-                    
-                    html_lines.append(f"""              <details class="tool-widget">
-                <summary>
-                  <div class="tool-summary-left">
-                    <span class="tool-pill">{tname}</span>
-                    <span class="tool-desc">{html.escape(summary)}</span>
+                    elif tname == 'view_file':
+                        tf = targs.get('AbsolutePath', '')
+                        fn = os.path.basename(tf)
+                        icon = get_file_icon(fn)
+                        s_line = targs.get('StartLine', 1)
+                        e_line = targs.get('EndLine', '')
+                        range_str = f"#L{s_line}-{e_line}" if e_line else f"#L{s_line}"
+                        
+                        html_lines.append(f"""                <details class="process-item">
+                  <summary class="process-summary">
+                    <span class="process-left">
+                      <span class="process-action">Analyzed</span>
+                      <span class="process-file">{icon} {html.escape(fn)}</span>
+                      <span class="line-range-pill">{range_str}</span>
+                    </span>
+                    <span class="process-chevron">&rsaquo;</span>
+                  </summary>
+                  <div class="process-drawer">
+                    <pre style="white-space: pre-wrap; max-height: 350px; overflow-y: auto;">{html.escape(tresult[:2500])}</pre>
                   </div>
-                  {chevron_svg}
-                </summary>
-                <div class="tool-body">
-                  <div class="tool-section-label">Parameters</div>
-                  <pre style="margin-bottom:0.5rem;color:var(--text-muted);">{arg_dump}</pre>
-                  <div class="tool-section-label">Output</div>
-                  <pre>{res_dump}</pre>
-                </div>
-              </details>""")
+                </details>""")
 
-            # 3. Model Prose Response
-            elif ev_type == 'response':
-                resp_text = ev['text']
-                
-                # Check for images referenced in this response
-                img_embeds = []
-                for img_name in ['verified_raions_map.png', 'new_dashboard_clean.png', 'regional_performance_heatmap.png', 'regional_onset_performance_heatmap.png', 'benchmark_horizons_f2.png', 'hromada_active_render.png']:
-                    if img_name in resp_text:
-                        img_embeds.append(f"""<div class="media-card">
+                    elif tname == 'run_command':
+                        cmd = targs.get('CommandLine', '')
+                        summary = targs.get('toolSummary') or targs.get('toolAction') or cmd[:40]
+                        
+                        html_lines.append(f"""                <details class="process-item">
+                  <summary class="process-summary">
+                    <span class="process-left">
+                      <span class="process-title">{html.escape(summary)}</span>
+                    </span>
+                    <span class="process-right">
+                      <span class="process-status-icon">&x2B21;</span>
+                      <span class="process-chevron">&rsaquo;</span>
+                    </span>
+                  </summary>
+                  <div class="process-drawer">
+                    <div class="terminal-box">
+                      <div class="terminal-head">$ {html.escape(cmd)}</div>
+                      <div class="terminal-body">{html.escape(tresult.strip())}</div>
+                    </div>
+                  </div>
+                </details>""")
+
+                    elif tname == 'ask_question':
+                        q_list = targs.get('questions', [])
+                        if isinstance(q_list, str):
+                            try: q_list = json.loads(q_list)
+                            except: q_list = []
+                            
+                        for q in q_list:
+                            q_text = html.escape(q.get('question', 'Question'))
+                            opts = q.get('options', [])
+                            opt_htmls = []
+                            for idx, opt in enumerate(opts):
+                                is_sel = opt in tresult or f"A{idx+1}" in tresult or (idx == 0 and "Recommended" in tresult and "Recommended" in opt)
+                                sel_cls = "selected" if is_sel else ""
+                                sel_bdg = '<span class="q-badge">&check; Selected</span>' if is_sel else ''
+                                opt_htmls.append(f'<div class="q-opt {sel_cls}"><span>{html.escape(opt)}</span>{sel_bdg}</div>')
+                                
+                            html_lines.append(f"""                <details class="process-item">
+                  <summary class="process-summary">
+                    <span class="process-left">
+                      <span class="process-action">Interview</span>
+                      <span class="process-title">{q_text}</span>
+                    </span>
+                    <span class="process-chevron">&rsaquo;</span>
+                  </summary>
+                  <div class="process-drawer">
+                    <div class="question-box">
+                      <div style="font-weight: 600; margin-bottom: 0.35rem;">{q_text}</div>
+                      {"".join(opt_htmls)}
+                    </div>
+                  </div>
+                </details>""")
+
+                    else:
+                        summary = targs.get('toolSummary') or tname
+                        html_lines.append(f"""                <details class="process-item">
+                  <summary class="process-summary">
+                    <span class="process-left">
+                      <span class="process-action">{html.escape(tname)}</span>
+                      <span class="process-title">{html.escape(summary)}</span>
+                    </span>
+                    <span class="process-chevron">&rsaquo;</span>
+                  </summary>
+                  <div class="process-drawer">
+                    <pre style="white-space: pre-wrap; max-height: 300px; overflow-y: auto;">{html.escape(tresult[:2000])}</pre>
+                  </div>
+                </details>""")
+
+            html_lines.append("""              </div>""")
+
+        # Assistant Responses (Prose & Images)
+        if t['responses']:
+            combined_resp = "\n\n".join(t['responses'])
+            
+            # Check for media attachments
+            media_items = []
+            for img_name in ['verified_raions_map.png', 'new_dashboard_clean.png', 'regional_performance_heatmap.png', 'regional_onset_performance_heatmap.png', 'benchmark_horizons_f2.png', 'hromada_active_render.png']:
+                if img_name in combined_resp:
+                    media_items.append(f"""<div class="media-card">
   <img src="media/{img_name}" class="media-img" alt="{img_name}" onerror="this.onerror=null; this.src='../brain/media/{img_name}';">
   <div class="media-caption"><span>{img_name}</span><span>Diagnostic Visualization</span></div>
 </div>""")
-                        
-                formatted_markdown = parse_markdown(resp_text)
-                media_html = "".join(img_embeds)
-                
-                html_lines.append(f"""              <div class="prose">
-                {formatted_markdown}
+                    
+            rendered_prose = render_markdown(combined_resp)
+            media_html = "".join(media_items)
+            
+            html_lines.append(f"""              <div class="prose">
+                {rendered_prose}
                 {media_html}
               </div>""")
 
@@ -1293,19 +1313,14 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
   </div>
 
   <script>
-    let thoughtsOpen = false;
-    let toolsOpen = false;
+    let processesExpanded = false;
 
-    function toggleAllThoughts() {
-      thoughtsOpen = !thoughtsOpen;
-      document.querySelectorAll('.thinking-accordion').forEach(el => { el.open = thoughtsOpen; });
-      document.getElementById('toggleThoughtsBtn').classList.toggle('active', thoughtsOpen);
-    }
-
-    function toggleAllTools() {
-      toolsOpen = !toolsOpen;
-      document.querySelectorAll('.tool-widget').forEach(el => { el.open = toolsOpen; });
-      document.getElementById('toggleToolsBtn').classList.toggle('active', toolsOpen);
+    function toggleAllProcesses() {
+      processesExpanded = !processesExpanded;
+      document.querySelectorAll('.process-item').forEach(el => {
+        el.open = processesExpanded;
+      });
+      document.getElementById('toggleThoughtsBtn').classList.toggle('active', processesExpanded);
     }
 
     function toggleTheme() {
@@ -1337,14 +1352,14 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       const pre = btn.closest('.code-block').querySelector('pre code');
       if (pre) {
         navigator.clipboard.writeText(pre.innerText).then(() => {
-          const original = btn.innerText;
+          const orig = btn.innerText;
           btn.innerText = 'Copied!';
-          setTimeout(() => { btn.innerText = original; }, 2000);
+          setTimeout(() => { btn.innerText = orig; }, 2000);
         });
       }
     }
 
-    // Live Turn Filter in Sidebar
+    // Live Turn Filter
     const searchInput = document.getElementById('turnSearchInput');
     searchInput.addEventListener('input', (e) => {
       const q = e.target.value.toLowerCase().trim();
@@ -1359,7 +1374,7 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
       });
     });
 
-    // IntersectionObserver to highlight active turn in sidebar as user scrolls
+    // Auto highlight active turn in sidebar on scroll
     let userHasScrolled = false;
     window.addEventListener('scroll', () => { userHasScrolled = true; }, { once: true });
 
@@ -1388,7 +1403,7 @@ def build_native_html(turns, total_steps: int, conv_id: str, out_path: str):
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, 'w', encoding='utf-8') as f:
         f.write("\n".join(html_lines))
-    print(f"Generated Native Antigravity Chat UI: {out_path} ({os.path.getsize(out_path)/(1024*1024):.2f} MB)")
+    print(f"Generated Native Antigravity Chat UI v3: {out_path} ({os.path.getsize(out_path)/(1024*1024):.2f} MB)")
 
 def main():
     repo_root = Path(__file__).resolve().parent.parent
@@ -1402,11 +1417,11 @@ def main():
     
     conv_id = "6e0c7109-5304-44a3-8c3d-a42d1e47513c"
     
-    # Generate docs/index.html
+    # 1. Output to docs/index.html
     docs_index = repo_root / "docs" / "index.html"
     build_native_html(turns, total_steps, conv_id, str(docs_index))
     
-    # Mirror in brain/conversation_viewer.html
+    # 2. Mirror in brain/conversation_viewer.html
     brain_viewer = repo_root / "brain" / "conversation_viewer.html"
     build_native_html(turns, total_steps, conv_id, str(brain_viewer))
 
