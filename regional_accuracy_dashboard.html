@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_6dcdcd08f02e04842f93bda5d63c4e51 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_6dcdcd08f02e04842f93bda5d63c4e51" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_6dcdcd08f02e04842f93bda5d63c4e51 = L.map(
+                "map_6dcdcd08f02e04842f93bda5d63c4e51",
+                {
+                    center: [48.3794, 31.1656],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 6,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_550471d6f6ca3a0c250fff01d492cffb = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_550471d6f6ca3a0c250fff01d492cffb.addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+            var circle_marker_eb21c43f1f54782e96277f4f484e790e = L.circleMarker(
+                [49.4444, 32.0598],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.627645204862674, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_f255d81d9b2ad7c59287972edd3a9a39 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2e1c37e34d8eb759245251ab5bce7910 = $(`<div id="html_2e1c37e34d8eb759245251ab5bce7910" style="width: 100.0%; height: 100.0%;">         <b>Cherkaska oblast</b><br>         1h Accuracy: 85.3%<br>         1h F2-Score: 0.828<br>         Lift vs Naive: +0.012         </div>`)[0];
+                popup_f255d81d9b2ad7c59287972edd3a9a39.setContent(html_2e1c37e34d8eb759245251ab5bce7910);
+            
+        
+
+        circle_marker_eb21c43f1f54782e96277f4f484e790e.bindPopup(popup_f255d81d9b2ad7c59287972edd3a9a39)
+        ;
+
+        
+    
+    
+            circle_marker_eb21c43f1f54782e96277f4f484e790e.bindTooltip(
+                `<div>
+                     Cherkaska oblast: 0.828 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c7827ab934078fa93710fac224546aa5 = L.circleMarker(
+                [51.4982, 31.2893],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.884653367568635, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_cfcae3a9513da668a98f229b5e2d5e04 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_763edf859be14a71dfd8c3062e37080c = $(`<div id="html_763edf859be14a71dfd8c3062e37080c" style="width: 100.0%; height: 100.0%;">         <b>Chernihivska oblast</b><br>         1h Accuracy: 94.6%<br>         1h F2-Score: 0.986<br>         Lift vs Naive: +0.014         </div>`)[0];
+                popup_cfcae3a9513da668a98f229b5e2d5e04.setContent(html_763edf859be14a71dfd8c3062e37080c);
+            
+        
+
+        circle_marker_c7827ab934078fa93710fac224546aa5.bindPopup(popup_cfcae3a9513da668a98f229b5e2d5e04)
+        ;
+
+        
+    
+    
+            circle_marker_c7827ab934078fa93710fac224546aa5.bindTooltip(
+                `<div>
+                     Chernihivska oblast: 0.986 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_77f35db4efff8ed03fc0b87a8ea58457 = L.circleMarker(
+                [48.2917, 25.9352],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.950413223140494, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_d0ca9f13be760228d02e4ea3097b4059 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_14d40f55261245ba53e659f998d98ab9 = $(`<div id="html_14d40f55261245ba53e659f998d98ab9" style="width: 100.0%; height: 100.0%;">         <b>Chernivetska oblast</b><br>         1h Accuracy: 98.8%<br>         1h F2-Score: 0.744<br>         Lift vs Naive: +0.024         </div>`)[0];
+                popup_d0ca9f13be760228d02e4ea3097b4059.setContent(html_14d40f55261245ba53e659f998d98ab9);
+            
+        
+
+        circle_marker_77f35db4efff8ed03fc0b87a8ea58457.bindPopup(popup_d0ca9f13be760228d02e4ea3097b4059)
+        ;
+
+        
+    
+    
+            circle_marker_77f35db4efff8ed03fc0b87a8ea58457.bindTooltip(
+                `<div>
+                     Chernivetska oblast: 0.744 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4d1bf3ae14a66a2056852c6320a69775 = L.circleMarker(
+                [48.4647, 35.0462],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.0, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_17f7c2d409b1593d0e36408974b08667 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_706cd2afb2e0fd0fe0a6f1fe33d509bc = $(`<div id="html_706cd2afb2e0fd0fe0a6f1fe33d509bc" style="width: 100.0%; height: 100.0%;">         <b>Dnipropetrovska oblast</b><br>         1h Accuracy: 100.0%<br>         1h F2-Score: 0.000<br>         Lift vs Naive: +0.000         </div>`)[0];
+                popup_17f7c2d409b1593d0e36408974b08667.setContent(html_706cd2afb2e0fd0fe0a6f1fe33d509bc);
+            
+        
+
+        circle_marker_4d1bf3ae14a66a2056852c6320a69775.bindPopup(popup_17f7c2d409b1593d0e36408974b08667)
+        ;
+
+        
+    
+    
+            circle_marker_4d1bf3ae14a66a2056852c6320a69775.bindTooltip(
+                `<div>
+                     Dnipropetrovska oblast: 0.000 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cf338bd2e003d6e447d6c4ca87fe9a02 = L.circleMarker(
+                [48.0159, 37.8028],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.0, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_5d06f98ca7d631aebf68cd7597862ed3 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8a409c6463efc0f53a1e3c4af9f0d9b4 = $(`<div id="html_8a409c6463efc0f53a1e3c4af9f0d9b4" style="width: 100.0%; height: 100.0%;">         <b>Donetska oblast</b><br>         1h Accuracy: 100.0%<br>         1h F2-Score: 0.000<br>         Lift vs Naive: +0.000         </div>`)[0];
+                popup_5d06f98ca7d631aebf68cd7597862ed3.setContent(html_8a409c6463efc0f53a1e3c4af9f0d9b4);
+            
+        
+
+        circle_marker_cf338bd2e003d6e447d6c4ca87fe9a02.bindPopup(popup_5d06f98ca7d631aebf68cd7597862ed3)
+        ;
+
+        
+    
+    
+            circle_marker_cf338bd2e003d6e447d6c4ca87fe9a02.bindTooltip(
+                `<div>
+                     Donetska oblast: 0.000 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bff4b2847f5f778412d589881016c8b4 = L.circleMarker(
+                [48.9226, 24.7111],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.517241379310345, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_d7bb0cf149c4a8fa1be061b3d60decb8 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5db8643867ceb38b8e3e3c02bb9ac5f1 = $(`<div id="html_5db8643867ceb38b8e3e3c02bb9ac5f1" style="width: 100.0%; height: 100.0%;">         <b>Ivano-Frankivska oblast</b><br>         1h Accuracy: 99.4%<br>         1h F2-Score: 0.690<br>         Lift vs Naive: +0.023         </div>`)[0];
+                popup_d7bb0cf149c4a8fa1be061b3d60decb8.setContent(html_5db8643867ceb38b8e3e3c02bb9ac5f1);
+            
+        
+
+        circle_marker_bff4b2847f5f778412d589881016c8b4.bindPopup(popup_d7bb0cf149c4a8fa1be061b3d60decb8)
+        ;
+
+        
+    
+    
+            circle_marker_bff4b2847f5f778412d589881016c8b4.bindTooltip(
+                `<div>
+                     Ivano-Frankivska oblast: 0.690 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_814556e3519d7b8fb61d151b96dcbf39 = L.circleMarker(
+                [49.9935, 36.2304],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.998518792816146, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_c5116bf2901a9e237adff06d3c8e629b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7d8c8513c4477974e160403b84b55fa6 = $(`<div id="html_7d8c8513c4477974e160403b84b55fa6" style="width: 100.0%; height: 100.0%;">         <b>Kharkivska oblast</b><br>         1h Accuracy: 99.9%<br>         1h F2-Score: 1.000<br>         Lift vs Naive: +0.001         </div>`)[0];
+                popup_c5116bf2901a9e237adff06d3c8e629b.setContent(html_7d8c8513c4477974e160403b84b55fa6);
+            
+        
+
+        circle_marker_814556e3519d7b8fb61d151b96dcbf39.bindPopup(popup_c5116bf2901a9e237adff06d3c8e629b)
+        ;
+
+        
+    
+    
+            circle_marker_814556e3519d7b8fb61d151b96dcbf39.bindTooltip(
+                `<div>
+                     Kharkivska oblast: 1.000 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b45b858002bb727f4178884df2d765c8 = L.circleMarker(
+                [46.6354, 32.6169],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.297444263186513, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_70b5dfa78903bfe5a2c2f9fd4ecf8cf7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_613c63c4a6a3fedaf6a98f4c83b30c74 = $(`<div id="html_613c63c4a6a3fedaf6a98f4c83b30c74" style="width: 100.0%; height: 100.0%;">         <b>Khersonska oblast</b><br>         1h Accuracy: 85.0%<br>         1h F2-Score: 0.912<br>         Lift vs Naive: +0.033         </div>`)[0];
+                popup_70b5dfa78903bfe5a2c2f9fd4ecf8cf7.setContent(html_613c63c4a6a3fedaf6a98f4c83b30c74);
+            
+        
+
+        circle_marker_b45b858002bb727f4178884df2d765c8.bindPopup(popup_70b5dfa78903bfe5a2c2f9fd4ecf8cf7)
+        ;
+
+        
+    
+    
+            circle_marker_b45b858002bb727f4178884df2d765c8.bindTooltip(
+                `<div>
+                     Khersonska oblast: 0.912 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3c3a22eb51e527101f1c047ba6830544 = L.circleMarker(
+                [49.423, 26.9871],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.454545454545453, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_7a8d756fefc334a30e2cea635e354281 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2cd7d26fd936b3c335f7020921f01588 = $(`<div id="html_2cd7d26fd936b3c335f7020921f01588" style="width: 100.0%; height: 100.0%;">         <b>Khmelnytska oblast</b><br>         1h Accuracy: 96.9%<br>         1h F2-Score: 0.682<br>         Lift vs Naive: +0.009         </div>`)[0];
+                popup_7a8d756fefc334a30e2cea635e354281.setContent(html_2cd7d26fd936b3c335f7020921f01588);
+            
+        
+
+        circle_marker_3c3a22eb51e527101f1c047ba6830544.bindPopup(popup_7a8d756fefc334a30e2cea635e354281)
+        ;
+
+        
+    
+    
+            circle_marker_3c3a22eb51e527101f1c047ba6830544.bindTooltip(
+                `<div>
+                     Khmelnytska oblast: 0.682 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_165692fe2e96cf57c72fd3a0a90ff59f = L.circleMarker(
+                [48.5079, 32.2623],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.116279069767444, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_c2939a6e1babba18fa9338cbca74c0b9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e7f04c4536ca823bc3a897192c7e5a27 = $(`<div id="html_e7f04c4536ca823bc3a897192c7e5a27" style="width: 100.0%; height: 100.0%;">         <b>Kirovohradska oblast</b><br>         1h Accuracy: 84.3%<br>         1h F2-Score: 0.890<br>         Lift vs Naive: +0.022         </div>`)[0];
+                popup_c2939a6e1babba18fa9338cbca74c0b9.setContent(html_e7f04c4536ca823bc3a897192c7e5a27);
+            
+        
+
+        circle_marker_165692fe2e96cf57c72fd3a0a90ff59f.bindPopup(popup_c2939a6e1babba18fa9338cbca74c0b9)
+        ;
+
+        
+    
+    
+            circle_marker_165692fe2e96cf57c72fd3a0a90ff59f.bindTooltip(
+                `<div>
+                     Kirovohradska oblast: 0.890 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9868d9430f8c0106ba1d6d55e4253fa2 = L.circleMarker(
+                [50.4501, 30.5234],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.555760936537276, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_4ca39f2220f800b7d3dce8946950df84 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ec86ce9cbd74a7f64af6f2072236fa65 = $(`<div id="html_ec86ce9cbd74a7f64af6f2072236fa65" style="width: 100.0%; height: 100.0%;">         <b>Kyiv City</b><br>         1h Accuracy: 88.8%<br>         1h F2-Score: 0.819<br>         Lift vs Naive: +0.007         </div>`)[0];
+                popup_4ca39f2220f800b7d3dce8946950df84.setContent(html_ec86ce9cbd74a7f64af6f2072236fa65);
+            
+        
+
+        circle_marker_9868d9430f8c0106ba1d6d55e4253fa2.bindPopup(popup_4ca39f2220f800b7d3dce8946950df84)
+        ;
+
+        
+    
+    
+            circle_marker_9868d9430f8c0106ba1d6d55e4253fa2.bindTooltip(
+                `<div>
+                     Kyiv City: 0.819 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_82d4f82ee8ab6ed86a4e96802276cec7 = L.circleMarker(
+                [50.2547, 30.2403],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.018229166666668, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_2daeb03d4eece748c3e8477dd991099a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_edc0f382e8329d15be5115fdbf92485f = $(`<div id="html_edc0f382e8329d15be5115fdbf92485f" style="width: 100.0%; height: 100.0%;">         <b>Kyivska oblast</b><br>         1h Accuracy: 85.7%<br>         1h F2-Score: 0.877<br>         Lift vs Naive: +0.004         </div>`)[0];
+                popup_2daeb03d4eece748c3e8477dd991099a.setContent(html_edc0f382e8329d15be5115fdbf92485f);
+            
+        
+
+        circle_marker_82d4f82ee8ab6ed86a4e96802276cec7.bindPopup(popup_2daeb03d4eece748c3e8477dd991099a)
+        ;
+
+        
+    
+    
+            circle_marker_82d4f82ee8ab6ed86a4e96802276cec7.bindTooltip(
+                `<div>
+                     Kyivska oblast: 0.877 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_983e0610ecf5db6aeeca3009fd1edee5 = L.circleMarker(
+                [48.574, 39.3078],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.0, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_a1ec6fc183f76abc60f6cd6da11e1a1c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8edd0604d8f755e4d8d6dee2fe6c968f = $(`<div id="html_8edd0604d8f755e4d8d6dee2fe6c968f" style="width: 100.0%; height: 100.0%;">         <b>Luhanska oblast</b><br>         1h Accuracy: 100.0%<br>         1h F2-Score: 0.000<br>         Lift vs Naive: +0.000         </div>`)[0];
+                popup_a1ec6fc183f76abc60f6cd6da11e1a1c.setContent(html_8edd0604d8f755e4d8d6dee2fe6c968f);
+            
+        
+
+        circle_marker_983e0610ecf5db6aeeca3009fd1edee5.bindPopup(popup_a1ec6fc183f76abc60f6cd6da11e1a1c)
+        ;
+
+        
+    
+    
+            circle_marker_983e0610ecf5db6aeeca3009fd1edee5.bindTooltip(
+                `<div>
+                     Luhanska oblast: 0.000 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0599baa2c8aea386ec726b3a51376316 = L.circleMarker(
+                [49.8397, 24.0297],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.263157894736842, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_936c9045380232644c07865f0c4733f1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1e2ba7f4e953aeb1447f56bec4945226 = $(`<div id="html_1e2ba7f4e953aeb1447f56bec4945226" style="width: 100.0%; height: 100.0%;">         <b>Lvivska oblast</b><br>         1h Accuracy: 99.3%<br>         1h F2-Score: 0.658<br>         Lift vs Naive: +0.033         </div>`)[0];
+                popup_936c9045380232644c07865f0c4733f1.setContent(html_1e2ba7f4e953aeb1447f56bec4945226);
+            
+        
+
+        circle_marker_0599baa2c8aea386ec726b3a51376316.bindPopup(popup_936c9045380232644c07865f0c4733f1)
+        ;
+
+        
+    
+    
+            circle_marker_0599baa2c8aea386ec726b3a51376316.bindTooltip(
+                `<div>
+                     Lvivska oblast: 0.658 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_77fdffa725d3cf330bca9aed39f98a80 = L.circleMarker(
+                [46.975, 31.9946],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.6016357950445, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_c6e274676b08d05502e8b8684a4ae47d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_afbdb296a06a9cc5636d52cb28cc9ad1 = $(`<div id="html_afbdb296a06a9cc5636d52cb28cc9ad1" style="width: 100.0%; height: 100.0%;">         <b>Mykolaivska oblast</b><br>         1h Accuracy: 87.4%<br>         1h F2-Score: 0.950<br>         Lift vs Naive: +0.034         </div>`)[0];
+                popup_c6e274676b08d05502e8b8684a4ae47d.setContent(html_afbdb296a06a9cc5636d52cb28cc9ad1);
+            
+        
+
+        circle_marker_77fdffa725d3cf330bca9aed39f98a80.bindPopup(popup_c6e274676b08d05502e8b8684a4ae47d)
+        ;
+
+        
+    
+    
+            circle_marker_77fdffa725d3cf330bca9aed39f98a80.bindTooltip(
+                `<div>
+                     Mykolaivska oblast: 0.950 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cd5e389bdffd1a1b2bfe5e18154123a4 = L.circleMarker(
+                [46.4825, 30.7233],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.480649188514356, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_bf88d2fec57c8c4124347ec6df6bfb0a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e68333359f332d064568088b610d97c6 = $(`<div id="html_e68333359f332d064568088b610d97c6" style="width: 100.0%; height: 100.0%;">         <b>Odeska oblast</b><br>         1h Accuracy: 82.1%<br>         1h F2-Score: 0.935<br>         Lift vs Naive: +0.053         </div>`)[0];
+                popup_bf88d2fec57c8c4124347ec6df6bfb0a.setContent(html_e68333359f332d064568088b610d97c6);
+            
+        
+
+        circle_marker_cd5e389bdffd1a1b2bfe5e18154123a4.bindPopup(popup_bf88d2fec57c8c4124347ec6df6bfb0a)
+        ;
+
+        
+    
+    
+            circle_marker_cd5e389bdffd1a1b2bfe5e18154123a4.bindTooltip(
+                `<div>
+                     Odeska oblast: 0.935 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b3d654af337e507d04dccf4263be2676 = L.circleMarker(
+                [49.5883, 34.5514],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.502477700693756, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_977a4dc74050f7e93a4f8f22ebc49780 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e7cd6c57752c8372e7762d21116cc3c5 = $(`<div id="html_e7cd6c57752c8372e7762d21116cc3c5" style="width: 100.0%; height: 100.0%;">         <b>Poltavska oblast</b><br>         1h Accuracy: 84.7%<br>         1h F2-Score: 0.938<br>         Lift vs Naive: +0.036         </div>`)[0];
+                popup_977a4dc74050f7e93a4f8f22ebc49780.setContent(html_e7cd6c57752c8372e7762d21116cc3c5);
+            
+        
+
+        circle_marker_b3d654af337e507d04dccf4263be2676.bindPopup(popup_977a4dc74050f7e93a4f8f22ebc49780)
+        ;
+
+        
+    
+    
+            circle_marker_b3d654af337e507d04dccf4263be2676.bindTooltip(
+                `<div>
+                     Poltavska oblast: 0.938 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d1859bd954217c3be91ae6af0923a644 = L.circleMarker(
+                [50.6199, 26.2516],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.333333333333332, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_ba83fb0e9807af9cc6b70fa79a29fcf8 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d676661471295f3d18696e16bec92c91 = $(`<div id="html_d676661471295f3d18696e16bec92c91" style="width: 100.0%; height: 100.0%;">         <b>Rivnenska oblast</b><br>         1h Accuracy: 96.9%<br>         1h F2-Score: 0.667<br>         Lift vs Naive: +0.012         </div>`)[0];
+                popup_ba83fb0e9807af9cc6b70fa79a29fcf8.setContent(html_d676661471295f3d18696e16bec92c91);
+            
+        
+
+        circle_marker_d1859bd954217c3be91ae6af0923a644.bindPopup(popup_ba83fb0e9807af9cc6b70fa79a29fcf8)
+        ;
+
+        
+    
+    
+            circle_marker_d1859bd954217c3be91ae6af0923a644.bindTooltip(
+                `<div>
+                     Rivnenska oblast: 0.667 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_adf4b8224cac4c839c9f69c34f8bd3fc = L.circleMarker(
+                [50.9077, 34.7981],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.992571959145774, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_02ba59ea0b95126d41583ebc4037f1b6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_416ffabbbd198fe4d6c960076027dbc6 = $(`<div id="html_416ffabbbd198fe4d6c960076027dbc6" style="width: 100.0%; height: 100.0%;">         <b>Sumska oblast</b><br>         1h Accuracy: 99.5%<br>         1h F2-Score: 0.999<br>         Lift vs Naive: +0.002         </div>`)[0];
+                popup_02ba59ea0b95126d41583ebc4037f1b6.setContent(html_416ffabbbd198fe4d6c960076027dbc6);
+            
+        
+
+        circle_marker_adf4b8224cac4c839c9f69c34f8bd3fc.bindPopup(popup_02ba59ea0b95126d41583ebc4037f1b6)
+        ;
+
+        
+    
+    
+            circle_marker_adf4b8224cac4c839c9f69c34f8bd3fc.bindTooltip(
+                `<div>
+                     Sumska oblast: 0.999 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c8787671772f46dfc87081d1c7624aa9 = L.circleMarker(
+                [49.5535, 25.5948],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.22875816993464, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_1231c0121a9403005fad784c5558c4b3 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1aeb8040ffa864c6e175d0c3fa670050 = $(`<div id="html_1aeb8040ffa864c6e175d0c3fa670050" style="width: 100.0%; height: 100.0%;">         <b>Ternopilska oblast</b><br>         1h Accuracy: 98.2%<br>         1h F2-Score: 0.654<br>         Lift vs Naive: +0.070         </div>`)[0];
+                popup_1231c0121a9403005fad784c5558c4b3.setContent(html_1aeb8040ffa864c6e175d0c3fa670050);
+            
+        
+
+        circle_marker_c8787671772f46dfc87081d1c7624aa9.bindPopup(popup_1231c0121a9403005fad784c5558c4b3)
+        ;
+
+        
+    
+    
+            circle_marker_c8787671772f46dfc87081d1c7624aa9.bindTooltip(
+                `<div>
+                     Ternopilska oblast: 0.654 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e28f0bf3ca0e5380161031cefdec916f = L.circleMarker(
+                [49.2331, 28.4682],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.8876404494382, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_d02ed4b48acf3cd5d00b4ef9cca7089b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e29e1d77de768af8f38e08f649a6cc85 = $(`<div id="html_e29e1d77de768af8f38e08f649a6cc85" style="width: 100.0%; height: 100.0%;">         <b>Vinnytska oblast</b><br>         1h Accuracy: 91.7%<br>         1h F2-Score: 0.736<br>         Lift vs Naive: +0.009         </div>`)[0];
+                popup_d02ed4b48acf3cd5d00b4ef9cca7089b.setContent(html_e29e1d77de768af8f38e08f649a6cc85);
+            
+        
+
+        circle_marker_e28f0bf3ca0e5380161031cefdec916f.bindPopup(popup_d02ed4b48acf3cd5d00b4ef9cca7089b)
+        ;
+
+        
+    
+    
+            circle_marker_e28f0bf3ca0e5380161031cefdec916f.bindTooltip(
+                `<div>
+                     Vinnytska oblast: 0.736 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ac1d2583c0895f64725c6706c5bb1ff3 = L.circleMarker(
+                [50.7472, 25.3254],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.217391304347828, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_191a184d025a8321f0c1cb8532f0438e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_79aa698a692614edeaf14e4c04589bfc = $(`<div id="html_79aa698a692614edeaf14e4c04589bfc" style="width: 100.0%; height: 100.0%;">         <b>Volynska oblast</b><br>         1h Accuracy: 98.4%<br>         1h F2-Score: 0.652<br>         Lift vs Naive: +0.061         </div>`)[0];
+                popup_191a184d025a8321f0c1cb8532f0438e.setContent(html_79aa698a692614edeaf14e4c04589bfc);
+            
+        
+
+        circle_marker_ac1d2583c0895f64725c6706c5bb1ff3.bindPopup(popup_191a184d025a8321f0c1cb8532f0438e)
+        ;
+
+        
+    
+    
+            circle_marker_ac1d2583c0895f64725c6706c5bb1ff3.bindTooltip(
+                `<div>
+                     Volynska oblast: 0.652 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_95c979be0ea8141bb04ccb557723bf2e = L.circleMarker(
+                [48.6208, 22.2879],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.853658536585364, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_18335981a3dd08a0061f8c104a4f2585 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0abbfa23e7ffe9e373a80e98679a2e2b = $(`<div id="html_0abbfa23e7ffe9e373a80e98679a2e2b" style="width: 100.0%; height: 100.0%;">         <b>Zakarpatska oblast</b><br>         1h Accuracy: 99.5%<br>         1h F2-Score: 0.732<br>         Lift vs Naive: +0.107         </div>`)[0];
+                popup_18335981a3dd08a0061f8c104a4f2585.setContent(html_0abbfa23e7ffe9e373a80e98679a2e2b);
+            
+        
+
+        circle_marker_95c979be0ea8141bb04ccb557723bf2e.bindPopup(popup_18335981a3dd08a0061f8c104a4f2585)
+        ;
+
+        
+    
+    
+            circle_marker_95c979be0ea8141bb04ccb557723bf2e.bindTooltip(
+                `<div>
+                     Zakarpatska oblast: 0.732 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_12a93a385e4fba9db5921dfdbc61f951 = L.circleMarker(
+                [47.8388, 35.1396],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.98808859110367, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_2185cf5b33c15421f63ac09050825f7a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7c8140c18f3d970ef7c58eefd02b782c = $(`<div id="html_7c8140c18f3d970ef7c58eefd02b782c" style="width: 100.0%; height: 100.0%;">         <b>Zaporizka oblast</b><br>         1h Accuracy: 99.3%<br>         1h F2-Score: 0.999<br>         Lift vs Naive: +0.003         </div>`)[0];
+                popup_2185cf5b33c15421f63ac09050825f7a.setContent(html_7c8140c18f3d970ef7c58eefd02b782c);
+            
+        
+
+        circle_marker_12a93a385e4fba9db5921dfdbc61f951.bindPopup(popup_2185cf5b33c15421f63ac09050825f7a)
+        ;
+
+        
+    
+    
+            circle_marker_12a93a385e4fba9db5921dfdbc61f951.bindTooltip(
+                `<div>
+                     Zaporizka oblast: 0.999 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bc2ccd77a1dbaa5b50e8990fd58f2f26 = L.circleMarker(
+                [50.2547, 28.6587],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.899143672692674, "stroke": true, "weight": 3}
+            ).addTo(map_6dcdcd08f02e04842f93bda5d63c4e51);
+        
+    
+        var popup_847125a9d309ce6b04a279b83bba2a00 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_999f7e0e15b78ed1276ab45fa0aad156 = $(`<div id="html_999f7e0e15b78ed1276ab45fa0aad156" style="width: 100.0%; height: 100.0%;">         <b>Zhytomyrska oblast</b><br>         1h Accuracy: 90.2%<br>         1h F2-Score: 0.737<br>         Lift vs Naive: +0.012         </div>`)[0];
+                popup_847125a9d309ce6b04a279b83bba2a00.setContent(html_999f7e0e15b78ed1276ab45fa0aad156);
+            
+        
+
+        circle_marker_bc2ccd77a1dbaa5b50e8990fd58f2f26.bindPopup(popup_847125a9d309ce6b04a279b83bba2a00)
+        ;
+
+        
+    
+    
+            circle_marker_bc2ccd77a1dbaa5b50e8990fd58f2f26.bindTooltip(
+                `<div>
+                     Zhytomyrska oblast: 0.737 F2
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>

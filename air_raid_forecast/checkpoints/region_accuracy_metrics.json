@@ -1,0 +1,802 @@
+{
+  "Вінницька область": {
+    "1h": {
+      "raw_accuracy": 0.9038,
+      "balanced_accuracy": 0.8238,
+      "pr_auc": 0.8872,
+      "roc_auc": 0.9746,
+      "precision": 0.625,
+      "recall": 0.7143,
+      "f2_score": 0.6944,
+      "active_rate": 0.1346
+    },
+    "4h": {
+      "raw_accuracy": 0.5385,
+      "balanced_accuracy": 0.6209,
+      "pr_auc": 0.8116,
+      "roc_auc": 0.8113,
+      "precision": 0.4211,
+      "recall": 0.8889,
+      "f2_score": 0.7273,
+      "active_rate": 0.3462
+    },
+    "24h": {
+      "raw_accuracy": 0.5769,
+      "balanced_accuracy": 0.5,
+      "pr_auc": 0.843,
+      "roc_auc": 0.7212,
+      "precision": 0.5769,
+      "recall": 1.0,
+      "f2_score": 0.8721,
+      "active_rate": 0.5769
+    }
+  },
+  "Волинська область": {
+    "1h": {
+      "raw_accuracy": 0.9615,
+      "balanced_accuracy": 0.5,
+      "pr_auc": 0.1833,
+      "roc_auc": 0.92,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 0.0385
+    },
+    "4h": {
+      "raw_accuracy": 0.9038,
+      "balanced_accuracy": 0.5,
+      "pr_auc": 0.1352,
+      "roc_auc": 0.5745,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 0.0962
+    },
+    "24h": {
+      "raw_accuracy": 0.4231,
+      "balanced_accuracy": 0.5343,
+      "pr_auc": 0.5669,
+      "roc_auc": 0.6491,
+      "precision": 0.383,
+      "recall": 0.9474,
+      "f2_score": 0.7317,
+      "active_rate": 0.3654
+    }
+  },
+  "Дніпропетровська область": {
+    "1h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 1.0
+    },
+    "4h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 1.0
+    },
+    "24h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 1.0
+    }
+  },
+  "Донецька область": {
+    "1h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 1.0
+    },
+    "4h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 1.0
+    },
+    "24h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 1.0
+    }
+  },
+  "Житомирська область": {
+    "1h": {
+      "raw_accuracy": 0.9231,
+      "balanced_accuracy": 0.7787,
+      "pr_auc": 0.8322,
+      "roc_auc": 0.9745,
+      "precision": 0.6,
+      "recall": 0.6,
+      "f2_score": 0.6,
+      "active_rate": 0.0962
+    },
+    "4h": {
+      "raw_accuracy": 0.5385,
+      "balanced_accuracy": 0.6391,
+      "pr_auc": 0.536,
+      "roc_auc": 0.6945,
+      "precision": 0.3529,
+      "recall": 0.8571,
+      "f2_score": 0.6667,
+      "active_rate": 0.2692
+    },
+    "24h": {
+      "raw_accuracy": 0.5769,
+      "balanced_accuracy": 0.5,
+      "pr_auc": 0.742,
+      "roc_auc": 0.6318,
+      "precision": 0.5769,
+      "recall": 1.0,
+      "f2_score": 0.8721,
+      "active_rate": 0.5769
+    }
+  },
+  "Закарпатська область": {
+    "1h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 0.0
+    },
+    "4h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 0.0
+    },
+    "24h": {
+      "raw_accuracy": 0.3654,
+      "balanced_accuracy": 0.6827,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 0.0
+    }
+  },
+  "Запорізька область": {
+    "1h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 1.0
+    },
+    "4h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 1.0
+    },
+    "24h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 1.0
+    }
+  },
+  "Івано-Франківська область": {
+    "1h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 0.0
+    },
+    "4h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 0.0
+    },
+    "24h": {
+      "raw_accuracy": 0.0192,
+      "balanced_accuracy": 0.5096,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 0.0
+    }
+  },
+  "Київська область": {
+    "1h": {
+      "raw_accuracy": 0.9423,
+      "balanced_accuracy": 0.9333,
+      "pr_auc": 0.9917,
+      "roc_auc": 0.9708,
+      "precision": 0.9744,
+      "recall": 0.95,
+      "f2_score": 0.9548,
+      "active_rate": 0.7692
+    },
+    "4h": {
+      "raw_accuracy": 0.9038,
+      "balanced_accuracy": 0.5833,
+      "pr_auc": 0.9932,
+      "roc_auc": 0.9457,
+      "precision": 0.902,
+      "recall": 1.0,
+      "f2_score": 0.9787,
+      "active_rate": 0.8846
+    },
+    "24h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 1.0
+    }
+  },
+  "м. Київ": {
+    "1h": {
+      "raw_accuracy": 0.8654,
+      "balanced_accuracy": 0.827,
+      "pr_auc": 0.8459,
+      "roc_auc": 0.8341,
+      "precision": 0.9286,
+      "recall": 0.6842,
+      "f2_score": 0.7222,
+      "active_rate": 0.3654
+    },
+    "4h": {
+      "raw_accuracy": 0.5385,
+      "balanced_accuracy": 0.5772,
+      "pr_auc": 0.8181,
+      "roc_auc": 0.7999,
+      "precision": 0.4884,
+      "recall": 0.913,
+      "f2_score": 0.7778,
+      "active_rate": 0.4423
+    },
+    "24h": {
+      "raw_accuracy": 0.7115,
+      "balanced_accuracy": 0.5,
+      "pr_auc": 0.8406,
+      "roc_auc": 0.5784,
+      "precision": 0.7115,
+      "recall": 1.0,
+      "f2_score": 0.925,
+      "active_rate": 0.7115
+    }
+  },
+  "Кіровоградська область": {
+    "1h": {
+      "raw_accuracy": 0.7885,
+      "balanced_accuracy": 0.7257,
+      "pr_auc": 0.9192,
+      "roc_auc": 0.875,
+      "precision": 0.8205,
+      "recall": 0.8889,
+      "f2_score": 0.8743,
+      "active_rate": 0.6923
+    },
+    "4h": {
+      "raw_accuracy": 0.9038,
+      "balanced_accuracy": 0.5,
+      "pr_auc": 0.9927,
+      "roc_auc": 0.9319,
+      "precision": 0.9038,
+      "recall": 1.0,
+      "f2_score": 0.9792,
+      "active_rate": 0.9038
+    },
+    "24h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 1.0
+    }
+  },
+  "Луганська область": {
+    "1h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 0.0
+    },
+    "4h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 0.0
+    },
+    "24h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 0.0
+    }
+  },
+  "Львівська область": {
+    "1h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 0.0
+    },
+    "4h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 0.0
+    },
+    "24h": {
+      "raw_accuracy": 0.1346,
+      "balanced_accuracy": 0.5673,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 0.0
+    }
+  },
+  "Миколаївська область": {
+    "1h": {
+      "raw_accuracy": 0.7308,
+      "balanced_accuracy": 0.744,
+      "pr_auc": 0.9132,
+      "roc_auc": 0.9003,
+      "precision": 0.6471,
+      "recall": 0.9167,
+      "f2_score": 0.8462,
+      "active_rate": 0.4615
+    },
+    "4h": {
+      "raw_accuracy": 0.6538,
+      "balanced_accuracy": 0.5,
+      "pr_auc": 0.9778,
+      "roc_auc": 0.9551,
+      "precision": 0.6538,
+      "recall": 1.0,
+      "f2_score": 0.9043,
+      "active_rate": 0.6538
+    },
+    "24h": {
+      "raw_accuracy": 0.7308,
+      "balanced_accuracy": 0.5,
+      "pr_auc": 0.9805,
+      "roc_auc": 0.9361,
+      "precision": 0.7308,
+      "recall": 1.0,
+      "f2_score": 0.9314,
+      "active_rate": 0.7308
+    }
+  },
+  "Одеська область": {
+    "1h": {
+      "raw_accuracy": 0.8077,
+      "balanced_accuracy": 0.8212,
+      "pr_auc": 0.88,
+      "roc_auc": 0.9348,
+      "precision": 0.7143,
+      "recall": 0.9091,
+      "f2_score": 0.8621,
+      "active_rate": 0.4231
+    },
+    "4h": {
+      "raw_accuracy": 0.6346,
+      "balanced_accuracy": 0.5,
+      "pr_auc": 0.9722,
+      "roc_auc": 0.9482,
+      "precision": 0.6346,
+      "recall": 1.0,
+      "f2_score": 0.8967,
+      "active_rate": 0.6346
+    },
+    "24h": {
+      "raw_accuracy": 0.7308,
+      "balanced_accuracy": 0.5,
+      "pr_auc": 0.9798,
+      "roc_auc": 0.9342,
+      "precision": 0.7308,
+      "recall": 1.0,
+      "f2_score": 0.9314,
+      "active_rate": 0.7308
+    }
+  },
+  "Полтавська область": {
+    "1h": {
+      "raw_accuracy": 0.75,
+      "balanced_accuracy": 0.7679,
+      "pr_auc": 0.9159,
+      "roc_auc": 0.9137,
+      "precision": 0.6486,
+      "recall": 1.0,
+      "f2_score": 0.9023,
+      "active_rate": 0.4615
+    },
+    "4h": {
+      "raw_accuracy": 0.9038,
+      "balanced_accuracy": 0.8681,
+      "pr_auc": 0.9723,
+      "roc_auc": 0.9437,
+      "precision": 0.8947,
+      "recall": 0.9714,
+      "f2_score": 0.9551,
+      "active_rate": 0.6731
+    },
+    "24h": {
+      "raw_accuracy": 0.7308,
+      "balanced_accuracy": 0.5,
+      "pr_auc": 0.9599,
+      "roc_auc": 0.8863,
+      "precision": 0.7308,
+      "recall": 1.0,
+      "f2_score": 0.9314,
+      "active_rate": 0.7308
+    }
+  },
+  "Рівненська область": {
+    "1h": {
+      "raw_accuracy": 0.9423,
+      "balanced_accuracy": 0.5,
+      "pr_auc": 0.2472,
+      "roc_auc": 0.9184,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 0.0577
+    },
+    "4h": {
+      "raw_accuracy": 0.8462,
+      "balanced_accuracy": 0.4889,
+      "pr_auc": 0.231,
+      "roc_auc": 0.6286,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 0.1346
+    },
+    "24h": {
+      "raw_accuracy": 0.4038,
+      "balanced_accuracy": 0.5,
+      "pr_auc": 0.548,
+      "roc_auc": 0.6037,
+      "precision": 0.4038,
+      "recall": 1.0,
+      "f2_score": 0.7721,
+      "active_rate": 0.4038
+    }
+  },
+  "Сумська область": {
+    "1h": {
+      "raw_accuracy": 0.9808,
+      "balanced_accuracy": 0.5,
+      "pr_auc": 0.9949,
+      "roc_auc": 0.7647,
+      "precision": 0.9808,
+      "recall": 1.0,
+      "f2_score": 0.9961,
+      "active_rate": 0.9808
+    },
+    "4h": {
+      "raw_accuracy": 0.9808,
+      "balanced_accuracy": 0.5,
+      "pr_auc": 0.9953,
+      "roc_auc": 0.7843,
+      "precision": 0.9808,
+      "recall": 1.0,
+      "f2_score": 0.9961,
+      "active_rate": 0.9808
+    },
+    "24h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 1.0
+    }
+  },
+  "Тернопільська область": {
+    "1h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 0.0
+    },
+    "4h": {
+      "raw_accuracy": 0.9231,
+      "balanced_accuracy": 0.5,
+      "pr_auc": 0.1665,
+      "roc_auc": 0.6927,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 0.0769
+    },
+    "24h": {
+      "raw_accuracy": 0.2308,
+      "balanced_accuracy": 0.5,
+      "pr_auc": 0.4058,
+      "roc_auc": 0.5521,
+      "precision": 0.2308,
+      "recall": 1.0,
+      "f2_score": 0.6,
+      "active_rate": 0.2308
+    }
+  },
+  "Харківська область": {
+    "1h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 1.0
+    },
+    "4h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 1.0
+    },
+    "24h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 1.0
+    }
+  },
+  "Херсонська область": {
+    "1h": {
+      "raw_accuracy": 0.6346,
+      "balanced_accuracy": 0.6348,
+      "pr_auc": 0.7919,
+      "roc_auc": 0.717,
+      "precision": 0.6154,
+      "recall": 0.64,
+      "f2_score": 0.6349,
+      "active_rate": 0.4808
+    },
+    "4h": {
+      "raw_accuracy": 0.5577,
+      "balanced_accuracy": 0.4833,
+      "pr_auc": 0.8298,
+      "roc_auc": 0.7273,
+      "precision": 0.5686,
+      "recall": 0.9667,
+      "f2_score": 0.848,
+      "active_rate": 0.5769
+    },
+    "24h": {
+      "raw_accuracy": 0.7115,
+      "balanced_accuracy": 0.5,
+      "pr_auc": 0.8819,
+      "roc_auc": 0.6919,
+      "precision": 0.7115,
+      "recall": 1.0,
+      "f2_score": 0.925,
+      "active_rate": 0.7115
+    }
+  },
+  "Хмельницька область": {
+    "1h": {
+      "raw_accuracy": 0.9231,
+      "balanced_accuracy": 0.6146,
+      "pr_auc": 0.5833,
+      "roc_auc": 0.9479,
+      "precision": 0.5,
+      "recall": 0.25,
+      "f2_score": 0.2778,
+      "active_rate": 0.0769
+    },
+    "4h": {
+      "raw_accuracy": 0.8269,
+      "balanced_accuracy": 0.6318,
+      "pr_auc": 0.5409,
+      "roc_auc": 0.8114,
+      "precision": 0.5,
+      "recall": 0.3333,
+      "f2_score": 0.3571,
+      "active_rate": 0.1731
+    },
+    "24h": {
+      "raw_accuracy": 0.4038,
+      "balanced_accuracy": 0.5,
+      "pr_auc": 0.5541,
+      "roc_auc": 0.576,
+      "precision": 0.4038,
+      "recall": 1.0,
+      "f2_score": 0.7721,
+      "active_rate": 0.4038
+    }
+  },
+  "Черкаська область": {
+    "1h": {
+      "raw_accuracy": 0.7885,
+      "balanced_accuracy": 0.8126,
+      "pr_auc": 0.8417,
+      "roc_auc": 0.8958,
+      "precision": 0.625,
+      "recall": 0.8824,
+      "f2_score": 0.8152,
+      "active_rate": 0.3269
+    },
+    "4h": {
+      "raw_accuracy": 0.5385,
+      "balanced_accuracy": 0.5,
+      "pr_auc": 0.9459,
+      "roc_auc": 0.9263,
+      "precision": 0.5385,
+      "recall": 1.0,
+      "f2_score": 0.8537,
+      "active_rate": 0.5385
+    },
+    "24h": {
+      "raw_accuracy": 0.7308,
+      "balanced_accuracy": 0.5,
+      "pr_auc": 0.9461,
+      "roc_auc": 0.8571,
+      "precision": 0.7308,
+      "recall": 1.0,
+      "f2_score": 0.9314,
+      "active_rate": 0.7308
+    }
+  },
+  "Чернівецька область": {
+    "1h": {
+      "raw_accuracy": 0.9808,
+      "balanced_accuracy": 0.5,
+      "pr_auc": 0.25,
+      "roc_auc": 0.9804,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 0.0192
+    },
+    "4h": {
+      "raw_accuracy": 0.9231,
+      "balanced_accuracy": 0.48,
+      "pr_auc": 0.2917,
+      "roc_auc": 0.96,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 0.0385
+    },
+    "24h": {
+      "raw_accuracy": 0.2885,
+      "balanced_accuracy": 0.5795,
+      "pr_auc": 0.3824,
+      "roc_auc": 0.8409,
+      "precision": 0.1778,
+      "recall": 1.0,
+      "f2_score": 0.5195,
+      "active_rate": 0.1538
+    }
+  },
+  "Чернігівська область": {
+    "1h": {
+      "raw_accuracy": 0.9808,
+      "balanced_accuracy": 0.5,
+      "pr_auc": 1.0,
+      "roc_auc": 1.0,
+      "precision": 0.9808,
+      "recall": 1.0,
+      "f2_score": 0.9961,
+      "active_rate": 0.9808
+    },
+    "4h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 1.0
+    },
+    "24h": {
+      "raw_accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "pr_auc": 0.0,
+      "roc_auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f2_score": 0.0,
+      "active_rate": 1.0
+    }
+  }
+}

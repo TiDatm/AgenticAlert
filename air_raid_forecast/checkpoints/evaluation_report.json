@@ -1,0 +1,92 @@
+{
+  "training_history": {
+    "train_loss": [
+      0.09179971625146777,
+      0.0852278100672059,
+      0.08444148165179349,
+      0.08390883334883181
+    ],
+    "val_loss": [
+      0.06054879589514299,
+      0.06267147562043233,
+      0.06296327066692439,
+      0.06519939581101591
+    ],
+    "loss_gap": [
+      0.6596,
+      0.7353,
+      0.7456,
+      0.777
+    ]
+  },
+  "model_metrics": {
+    "1h": {
+      "pr_auc": 0.9604,
+      "roc_auc": 0.9713,
+      "brier_score": 0.0946,
+      "ece": 0.1652,
+      "f2_score": 0.889,
+      "precision": 0.8518,
+      "recall": 0.8988
+    },
+    "4h": {
+      "pr_auc": 0.9667,
+      "roc_auc": 0.965,
+      "brier_score": 0.1206,
+      "ece": 0.1814,
+      "f2_score": 0.9185,
+      "precision": 0.7871,
+      "recall": 0.9585
+    },
+    "24h": {
+      "pr_auc": 0.975,
+      "roc_auc": 0.9582,
+      "brier_score": 0.1312,
+      "ece": 0.1487,
+      "f2_score": 0.9218,
+      "precision": 0.7052,
+      "recall": 0.9985
+    }
+  },
+  "persistence_baseline_metrics": {
+    "1h": {
+      "pr_auc": 0.9157,
+      "roc_auc": 0.8885,
+      "brier_score": 0.0908,
+      "ece": 0.0908,
+      "f2_score": 0.8272,
+      "precision": 0.9546,
+      "recall": 0.8005
+    },
+    "4h": {
+      "pr_auc": 0.9034,
+      "roc_auc": 0.8233,
+      "brier_score": 0.1706,
+      "ece": 0.1706,
+      "f2_score": 0.7027,
+      "precision": 0.9853,
+      "recall": 0.6556
+    },
+    "24h": {
+      "pr_auc": 0.9063,
+      "roc_auc": 0.7591,
+      "brier_score": 0.2956,
+      "ece": 0.2956,
+      "f2_score": 0.5753,
+      "precision": 0.9975,
+      "recall": 0.5203
+    }
+  },
+  "overfitting_diagnosis": {
+    "status": "HEALTHY_GENERALIZATION",
+    "generalization_loss_ratio": 0.777,
+    "train_loss": 0.0839,
+    "val_loss": 0.0652,
+    "baseline_pr_auc_lifts": {
+      "1h": 0.0447,
+      "4h": 0.0633,
+      "24h": 0.0687
+    },
+    "recommendation": "Model exhibits strong generalization and beats the persistence baseline without memorization."
+  }
+}

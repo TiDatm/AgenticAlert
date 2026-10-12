@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_68440c38573f531d6fc4d547eb5124fc {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_68440c38573f531d6fc4d547eb5124fc" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_68440c38573f531d6fc4d547eb5124fc = L.map(
+                "map_68440c38573f531d6fc4d547eb5124fc",
+                {
+                    center: [48.3794, 31.1656],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 6,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_5b99f7d12bb09ab0e3345c030b83a95a = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_5b99f7d12bb09ab0e3345c030b83a95a.addTo(map_68440c38573f531d6fc4d547eb5124fc);
+        
+    
+            var circle_marker_4c44119aff83dc33553b248e2bc276c7 = L.circleMarker(
+                [49.4444, 32.0598],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.924996101668484, "stroke": true, "weight": 3}
+            ).addTo(map_68440c38573f531d6fc4d547eb5124fc);
+        
+    
+        var popup_30541c23ddecc49211a687aab88321fd = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_fbd5995b31aee4d1af2271f112f3b5f8 = $(`<div id="html_fbd5995b31aee4d1af2271f112f3b5f8" style="width: 100.0%; height: 100.0%;">         <b>Cherkaska oblast</b><br>         Onset ROC-AUC: 0.616<br>         Onset PR-AUC: 0.154<br>         Signal Lift: 1.3x<br>         Defense F2: 0.404         </div>`)[0];
+                popup_30541c23ddecc49211a687aab88321fd.setContent(html_fbd5995b31aee4d1af2271f112f3b5f8);
+            
+        
+
+        circle_marker_4c44119aff83dc33553b248e2bc276c7.bindPopup(popup_30541c23ddecc49211a687aab88321fd)
+        ;
+
+        
+    
+    
+            circle_marker_4c44119aff83dc33553b248e2bc276c7.bindTooltip(
+                `<div>
+                     Cherkaska oblast: 0.616 ROC-AUC (1.3x Lift)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6d7f51d61b3694432659721a4c70f63b = L.circleMarker(
+                [51.4982, 31.2893],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.839650145772595, "stroke": true, "weight": 3}
+            ).addTo(map_68440c38573f531d6fc4d547eb5124fc);
+        
+    
+        var popup_b3f5de1641e7f6059cb54583e0f445c7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ffb53d35c0513eea0a3c0240563cdbf6 = $(`<div id="html_ffb53d35c0513eea0a3c0240563cdbf6" style="width: 100.0%; height: 100.0%;">         <b>Chernihivska oblast</b><br>         Onset ROC-AUC: 0.605<br>         Onset PR-AUC: 0.437<br>         Signal Lift: 1.2x<br>         Defense F2: 0.757         </div>`)[0];
+                popup_b3f5de1641e7f6059cb54583e0f445c7.setContent(html_ffb53d35c0513eea0a3c0240563cdbf6);
+            
+        
+
+        circle_marker_6d7f51d61b3694432659721a4c70f63b.bindPopup(popup_b3f5de1641e7f6059cb54583e0f445c7)
+        ;
+
+        
+    
+    
+            circle_marker_6d7f51d61b3694432659721a4c70f63b.bindTooltip(
+                `<div>
+                     Chernihivska oblast: 0.605 ROC-AUC (1.2x Lift)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3be9e9b117fc9567b9b558db7f6b4ca7 = L.circleMarker(
+                [48.2917, 25.9352],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.74914884924418, "stroke": true, "weight": 3}
+            ).addTo(map_68440c38573f531d6fc4d547eb5124fc);
+        
+    
+        var popup_b81f18cc1bd2c6d8be88b374d0c48b5d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_776cd479a87faa0ffbe596ded679f50c = $(`<div id="html_776cd479a87faa0ffbe596ded679f50c" style="width: 100.0%; height: 100.0%;">         <b>Chernivetska oblast</b><br>         Onset ROC-AUC: 0.719<br>         Onset PR-AUC: 0.014<br>         Signal Lift: 2.1x<br>         Defense F2: 0.081         </div>`)[0];
+                popup_b81f18cc1bd2c6d8be88b374d0c48b5d.setContent(html_776cd479a87faa0ffbe596ded679f50c);
+            
+        
+
+        circle_marker_3be9e9b117fc9567b9b558db7f6b4ca7.bindPopup(popup_b81f18cc1bd2c6d8be88b374d0c48b5d)
+        ;
+
+        
+    
+    
+            circle_marker_3be9e9b117fc9567b9b558db7f6b4ca7.bindTooltip(
+                `<div>
+                     Chernivetska oblast: 0.719 ROC-AUC (2.1x Lift)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c2f161ece2c2f4ca7d6b0bf2a7f2de58 = L.circleMarker(
+                [48.9226, 24.7111],
+                {"bubblingMouseEvents": true, "color": "#2980b9", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980b9", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.328638497652584, "stroke": true, "weight": 3}
+            ).addTo(map_68440c38573f531d6fc4d547eb5124fc);
+        
+    
+        var popup_bf2dc898f7ec2fcfe67ef4405564a521 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_027eeb2f6d2ec922862a3f154814b753 = $(`<div id="html_027eeb2f6d2ec922862a3f154814b753" style="width: 100.0%; height: 100.0%;">         <b>Ivano-Frankivska oblast</b><br>         Onset ROC-AUC: 0.791<br>         Onset PR-AUC: 0.011<br>         Signal Lift: 2.9x<br>         Defense F2: 0.102         </div>`)[0];
+                popup_bf2dc898f7ec2fcfe67ef4405564a521.setContent(html_027eeb2f6d2ec922862a3f154814b753);
+            
+        
+
+        circle_marker_c2f161ece2c2f4ca7d6b0bf2a7f2de58.bindPopup(popup_bf2dc898f7ec2fcfe67ef4405564a521)
+        ;
+
+        
+    
+    
+            circle_marker_c2f161ece2c2f4ca7d6b0bf2a7f2de58.bindTooltip(
+                `<div>
+                     Ivano-Frankivska oblast: 0.791 ROC-AUC (2.9x Lift)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e3b791e7c8b2cc8a542bbd6a598c5e7a = L.circleMarker(
+                [49.9935, 36.2304],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.0, "stroke": true, "weight": 3}
+            ).addTo(map_68440c38573f531d6fc4d547eb5124fc);
+        
+    
+        var popup_450c1be220bd8f5e33d9048f1f4a1d1e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a4dec179380363415ef457a18fa59038 = $(`<div id="html_a4dec179380363415ef457a18fa59038" style="width: 100.0%; height: 100.0%;">         <b>Kharkivska oblast</b><br>         Onset ROC-AUC: 0.500<br>         Onset PR-AUC: 0.000<br>         Signal Lift: 0.0x<br>         Defense F2: 0.000         </div>`)[0];
+                popup_450c1be220bd8f5e33d9048f1f4a1d1e.setContent(html_a4dec179380363415ef457a18fa59038);
+            
+        
+
+        circle_marker_e3b791e7c8b2cc8a542bbd6a598c5e7a.bindPopup(popup_450c1be220bd8f5e33d9048f1f4a1d1e)
+        ;
+
+        
+    
+    
+            circle_marker_e3b791e7c8b2cc8a542bbd6a598c5e7a.bindTooltip(
+                `<div>
+                     Kharkivska oblast: 0.500 ROC-AUC (0.0x Lift)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3cff67bbb92200a5e03f9c960e5445af = L.circleMarker(
+                [46.6354, 32.6169],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.247451343836886, "stroke": true, "weight": 3}
+            ).addTo(map_68440c38573f531d6fc4d547eb5124fc);
+        
+    
+        var popup_a3ef49de38dd80913c3f2a9ef57360e8 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0d141e25c70472382017904c88678efa = $(`<div id="html_0d141e25c70472382017904c88678efa" style="width: 100.0%; height: 100.0%;">         <b>Khersonska oblast</b><br>         Onset ROC-AUC: 0.656<br>         Onset PR-AUC: 0.359<br>         Signal Lift: 1.7x<br>         Defense F2: 0.604         </div>`)[0];
+                popup_a3ef49de38dd80913c3f2a9ef57360e8.setContent(html_0d141e25c70472382017904c88678efa);
+            
+        
+
+        circle_marker_3cff67bbb92200a5e03f9c960e5445af.bindPopup(popup_a3ef49de38dd80913c3f2a9ef57360e8)
+        ;
+
+        
+    
+    
+            circle_marker_3cff67bbb92200a5e03f9c960e5445af.bindTooltip(
+                `<div>
+                     Khersonska oblast: 0.656 ROC-AUC (1.7x Lift)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0d6ed0b6ef87f3653f507f06fcc35023 = L.circleMarker(
+                [49.423, 26.9871],
+                {"bubblingMouseEvents": true, "color": "#2980b9", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980b9", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.426504508282658, "stroke": true, "weight": 3}
+            ).addTo(map_68440c38573f531d6fc4d547eb5124fc);
+        
+    
+        var popup_0c9e4ad33dbd9d013ff27152c60f590a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_93d566eb575d0ab286268c78c391bfa4 = $(`<div id="html_93d566eb575d0ab286268c78c391bfa4" style="width: 100.0%; height: 100.0%;">         <b>Khmelnytska oblast</b><br>         Onset ROC-AUC: 0.803<br>         Onset PR-AUC: 0.060<br>         Signal Lift: 3.3x<br>         Defense F2: 0.265         </div>`)[0];
+                popup_0c9e4ad33dbd9d013ff27152c60f590a.setContent(html_93d566eb575d0ab286268c78c391bfa4);
+            
+        
+
+        circle_marker_0d6ed0b6ef87f3653f507f06fcc35023.bindPopup(popup_0c9e4ad33dbd9d013ff27152c60f590a)
+        ;
+
+        
+    
+    
+            circle_marker_0d6ed0b6ef87f3653f507f06fcc35023.bindTooltip(
+                `<div>
+                     Khmelnytska oblast: 0.803 ROC-AUC (3.3x Lift)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_58a58a15c3203dc792e233167df64b59 = L.circleMarker(
+                [48.5079, 32.2623],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.57182320441989, "stroke": true, "weight": 3}
+            ).addTo(map_68440c38573f531d6fc4d547eb5124fc);
+        
+    
+        var popup_39bb29ee426dedf4004f8f8eb9f99bc1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_cdcc7b0e8f92a9dd0aa2556ef172c138 = $(`<div id="html_cdcc7b0e8f92a9dd0aa2556ef172c138" style="width: 100.0%; height: 100.0%;">         <b>Kirovohradska oblast</b><br>         Onset ROC-AUC: 0.571<br>         Onset PR-AUC: 0.275<br>         Signal Lift: 1.5x<br>         Defense F2: 0.537         </div>`)[0];
+                popup_39bb29ee426dedf4004f8f8eb9f99bc1.setContent(html_cdcc7b0e8f92a9dd0aa2556ef172c138);
+            
+        
+
+        circle_marker_58a58a15c3203dc792e233167df64b59.bindPopup(popup_39bb29ee426dedf4004f8f8eb9f99bc1)
+        ;
+
+        
+    
+    
+            circle_marker_58a58a15c3203dc792e233167df64b59.bindTooltip(
+                `<div>
+                     Kirovohradska oblast: 0.571 ROC-AUC (1.5x Lift)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4710e7cf916e68cab20f5b8f09c43630 = L.circleMarker(
+                [50.4501, 30.5234],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.740275796481217, "stroke": true, "weight": 3}
+            ).addTo(map_68440c38573f531d6fc4d547eb5124fc);
+        
+    
+        var popup_6741f9fb1f644dcf8a718b400d566fdc = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9bc0adabaec6e1a97a0960a7ea62c6e1 = $(`<div id="html_9bc0adabaec6e1a97a0960a7ea62c6e1" style="width: 100.0%; height: 100.0%;">         <b>Kyiv City</b><br>         Onset ROC-AUC: 0.593<br>         Onset PR-AUC: 0.132<br>         Signal Lift: 1.7x<br>         Defense F2: 0.321         </div>`)[0];
+                popup_6741f9fb1f644dcf8a718b400d566fdc.setContent(html_9bc0adabaec6e1a97a0960a7ea62c6e1);
+            
+        
+
+        circle_marker_4710e7cf916e68cab20f5b8f09c43630.bindPopup(popup_6741f9fb1f644dcf8a718b400d566fdc)
+        ;
+
+        
+    
+    
+            circle_marker_4710e7cf916e68cab20f5b8f09c43630.bindTooltip(
+                `<div>
+                     Kyiv City: 0.593 ROC-AUC (1.7x Lift)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4eecb31a18b2097124432aa20c9264ef = L.circleMarker(
+                [50.2547, 30.2403],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.219432278994326, "stroke": true, "weight": 3}
+            ).addTo(map_68440c38573f531d6fc4d547eb5124fc);
+        
+    
+        var popup_a37487fdb9b31a1339d7023a7a9f9756 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_65ff30f3210c73687e4041460297a85b = $(`<div id="html_65ff30f3210c73687e4041460297a85b" style="width: 100.0%; height: 100.0%;">         <b>Kyivska oblast</b><br>         Onset ROC-AUC: 0.527<br>         Onset PR-AUC: 0.176<br>         Signal Lift: 1.1x<br>         Defense F2: 0.479         </div>`)[0];
+                popup_a37487fdb9b31a1339d7023a7a9f9756.setContent(html_65ff30f3210c73687e4041460297a85b);
+            
+        
+
+        circle_marker_4eecb31a18b2097124432aa20c9264ef.bindPopup(popup_a37487fdb9b31a1339d7023a7a9f9756)
+        ;
+
+        
+    
+    
+            circle_marker_4eecb31a18b2097124432aa20c9264ef.bindTooltip(
+                `<div>
+                     Kyivska oblast: 0.527 ROC-AUC (1.1x Lift)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3fdf1ccf24139b5d93a740eb67c5e4da = L.circleMarker(
+                [48.574, 39.3078],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.0, "stroke": true, "weight": 3}
+            ).addTo(map_68440c38573f531d6fc4d547eb5124fc);
+        
+    
+        var popup_0bb515cfcc9a94c920fb3b05056fd475 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_170f80941ff765c94ec2bbc465421cdb = $(`<div id="html_170f80941ff765c94ec2bbc465421cdb" style="width: 100.0%; height: 100.0%;">         <b>Luhanska oblast</b><br>         Onset ROC-AUC: 0.500<br>         Onset PR-AUC: 0.000<br>         Signal Lift: 0.0x<br>         Defense F2: 0.000         </div>`)[0];
+                popup_0bb515cfcc9a94c920fb3b05056fd475.setContent(html_170f80941ff765c94ec2bbc465421cdb);
+            
+        
+
+        circle_marker_3fdf1ccf24139b5d93a740eb67c5e4da.bindPopup(popup_0bb515cfcc9a94c920fb3b05056fd475)
+        ;
+
+        
+    
+    
+            circle_marker_3fdf1ccf24139b5d93a740eb67c5e4da.bindTooltip(
+                `<div>
+                     Luhanska oblast: 0.500 ROC-AUC (0.0x Lift)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ed951d5d808aa3a82924fc74b235d348 = L.circleMarker(
+                [49.8397, 24.0297],
+                {"bubblingMouseEvents": true, "color": "#2980b9", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980b9", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.53208722741433, "stroke": true, "weight": 3}
+            ).addTo(map_68440c38573f531d6fc4d547eb5124fc);
+        
+    
+        var popup_c8c6adfe7c77ae2121d076efe9d6755e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5ac86ad5374d08c792ee0916907d486d = $(`<div id="html_5ac86ad5374d08c792ee0916907d486d" style="width: 100.0%; height: 100.0%;">         <b>Lvivska oblast</b><br>         Onset ROC-AUC: 0.817<br>         Onset PR-AUC: 0.060<br>         Signal Lift: 21.5x<br>         Defense F2: 0.263         </div>`)[0];
+                popup_c8c6adfe7c77ae2121d076efe9d6755e.setContent(html_5ac86ad5374d08c792ee0916907d486d);
+            
+        
+
+        circle_marker_ed951d5d808aa3a82924fc74b235d348.bindPopup(popup_c8c6adfe7c77ae2121d076efe9d6755e)
+        ;
+
+        
+    
+    
+            circle_marker_ed951d5d808aa3a82924fc74b235d348.bindTooltip(
+                `<div>
+                     Lvivska oblast: 0.817 ROC-AUC (21.5x Lift)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6231f6830b312953f81fd710f0a657ec = L.circleMarker(
+                [46.975, 31.9946],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.769079132638694, "stroke": true, "weight": 3}
+            ).addTo(map_68440c38573f531d6fc4d547eb5124fc);
+        
+    
+        var popup_88dc6528cdd2352eb8b6a10ef9d5c62e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_32c432172d7e798069759e5fb02c4b68 = $(`<div id="html_32c432172d7e798069759e5fb02c4b68" style="width: 100.0%; height: 100.0%;">         <b>Mykolaivska oblast</b><br>         Onset ROC-AUC: 0.721<br>         Onset PR-AUC: 0.432<br>         Signal Lift: 1.8x<br>         Defense F2: 0.656         </div>`)[0];
+                popup_88dc6528cdd2352eb8b6a10ef9d5c62e.setContent(html_32c432172d7e798069759e5fb02c4b68);
+            
+        
+
+        circle_marker_6231f6830b312953f81fd710f0a657ec.bindPopup(popup_88dc6528cdd2352eb8b6a10ef9d5c62e)
+        ;
+
+        
+    
+    
+            circle_marker_6231f6830b312953f81fd710f0a657ec.bindTooltip(
+                `<div>
+                     Mykolaivska oblast: 0.721 ROC-AUC (1.8x Lift)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6fd198e0776fa744d1d8ea46cf10e3dd = L.circleMarker(
+                [46.4825, 30.7233],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.279227053140097, "stroke": true, "weight": 3}
+            ).addTo(map_68440c38573f531d6fc4d547eb5124fc);
+        
+    
+        var popup_2797f04ffd5a257ada1342f5e255d2c6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_fcb2f1e884dd413fdd0bcc498223adfa = $(`<div id="html_fcb2f1e884dd413fdd0bcc498223adfa" style="width: 100.0%; height: 100.0%;">         <b>Odeska oblast</b><br>         Onset ROC-AUC: 0.660<br>         Onset PR-AUC: 0.377<br>         Signal Lift: 1.3x<br>         Defense F2: 0.679         </div>`)[0];
+                popup_2797f04ffd5a257ada1342f5e255d2c6.setContent(html_fcb2f1e884dd413fdd0bcc498223adfa);
+            
+        
+
+        circle_marker_6fd198e0776fa744d1d8ea46cf10e3dd.bindPopup(popup_2797f04ffd5a257ada1342f5e255d2c6)
+        ;
+
+        
+    
+    
+            circle_marker_6fd198e0776fa744d1d8ea46cf10e3dd.bindTooltip(
+                `<div>
+                     Odeska oblast: 0.660 ROC-AUC (1.3x Lift)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3f6bc2d39d1825dc001b8b599168f9dd = L.circleMarker(
+                [49.5883, 34.5514],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.070888888888888, "stroke": true, "weight": 3}
+            ).addTo(map_68440c38573f531d6fc4d547eb5124fc);
+        
+    
+        var popup_ea4a04a203b905dadd6def4f3e52e078 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f0bc6fe5fc092ad0d4afe2b9e7a4bd93 = $(`<div id="html_f0bc6fe5fc092ad0d4afe2b9e7a4bd93" style="width: 100.0%; height: 100.0%;">         <b>Poltavska oblast</b><br>         Onset ROC-AUC: 0.634<br>         Onset PR-AUC: 0.313<br>         Signal Lift: 1.3x<br>         Defense F2: 0.652         </div>`)[0];
+                popup_ea4a04a203b905dadd6def4f3e52e078.setContent(html_f0bc6fe5fc092ad0d4afe2b9e7a4bd93);
+            
+        
+
+        circle_marker_3f6bc2d39d1825dc001b8b599168f9dd.bindPopup(popup_ea4a04a203b905dadd6def4f3e52e078)
+        ;
+
+        
+    
+    
+            circle_marker_3f6bc2d39d1825dc001b8b599168f9dd.bindTooltip(
+                `<div>
+                     Poltavska oblast: 0.634 ROC-AUC (1.3x Lift)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ad229bcfdade27e616f01d136cfa5c54 = L.circleMarker(
+                [50.6199, 26.2516],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.947211623895885, "stroke": true, "weight": 3}
+            ).addTo(map_68440c38573f531d6fc4d547eb5124fc);
+        
+    
+        var popup_71c687b3aadcf5bbe6a5c3fae3e5f2cf = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e892a08d6ca48c0c9fe0ee1172f25265 = $(`<div id="html_e892a08d6ca48c0c9fe0ee1172f25265" style="width: 100.0%; height: 100.0%;">         <b>Rivnenska oblast</b><br>         Onset ROC-AUC: 0.743<br>         Onset PR-AUC: 0.051<br>         Signal Lift: 2.7x<br>         Defense F2: 0.220         </div>`)[0];
+                popup_71c687b3aadcf5bbe6a5c3fae3e5f2cf.setContent(html_e892a08d6ca48c0c9fe0ee1172f25265);
+            
+        
+
+        circle_marker_ad229bcfdade27e616f01d136cfa5c54.bindPopup(popup_71c687b3aadcf5bbe6a5c3fae3e5f2cf)
+        ;
+
+        
+    
+    
+            circle_marker_ad229bcfdade27e616f01d136cfa5c54.bindTooltip(
+                `<div>
+                     Rivnenska oblast: 0.743 ROC-AUC (2.7x Lift)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1b94e57ba93e0ca0c1d37189780a6bfd = L.circleMarker(
+                [50.9077, 34.7981],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.666666666666666, "stroke": true, "weight": 3}
+            ).addTo(map_68440c38573f531d6fc4d547eb5124fc);
+        
+    
+        var popup_e47bcbd463cf4e15f8a72dfcfd29e3db = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_70212925a838d513cd158545e1f4305b = $(`<div id="html_70212925a838d513cd158545e1f4305b" style="width: 100.0%; height: 100.0%;">         <b>Sumska oblast</b><br>         Onset ROC-AUC: 0.333<br>         Onset PR-AUC: 0.461<br>         Signal Lift: 0.8x<br>         Defense F2: 0.882         </div>`)[0];
+                popup_e47bcbd463cf4e15f8a72dfcfd29e3db.setContent(html_70212925a838d513cd158545e1f4305b);
+            
+        
+
+        circle_marker_1b94e57ba93e0ca0c1d37189780a6bfd.bindPopup(popup_e47bcbd463cf4e15f8a72dfcfd29e3db)
+        ;
+
+        
+    
+    
+            circle_marker_1b94e57ba93e0ca0c1d37189780a6bfd.bindTooltip(
+                `<div>
+                     Sumska oblast: 0.333 ROC-AUC (0.8x Lift)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_72a6f6f70014e7da9b26c54711da13e5 = L.circleMarker(
+                [49.5535, 25.5948],
+                {"bubblingMouseEvents": true, "color": "#27ae60", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#27ae60", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.342884431709646, "stroke": true, "weight": 3}
+            ).addTo(map_68440c38573f531d6fc4d547eb5124fc);
+        
+    
+        var popup_b8140336da4eba6fcbf938b5a852cc11 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_39455452df34df9e6cc429b3bbfbe289 = $(`<div id="html_39455452df34df9e6cc429b3bbfbe289" style="width: 100.0%; height: 100.0%;">         <b>Ternopilska oblast</b><br>         Onset ROC-AUC: 0.918<br>         Onset PR-AUC: 0.122<br>         Signal Lift: 12.9x<br>         Defense F2: 0.417         </div>`)[0];
+                popup_b8140336da4eba6fcbf938b5a852cc11.setContent(html_39455452df34df9e6cc429b3bbfbe289);
+            
+        
+
+        circle_marker_72a6f6f70014e7da9b26c54711da13e5.bindPopup(popup_b8140336da4eba6fcbf938b5a852cc11)
+        ;
+
+        
+    
+    
+            circle_marker_72a6f6f70014e7da9b26c54711da13e5.bindTooltip(
+                `<div>
+                     Ternopilska oblast: 0.918 ROC-AUC (12.9x Lift)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_dd1ec8d7886f1601f2700c1c33bf3a0c = L.circleMarker(
+                [49.2331, 28.4682],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.380856000394925, "stroke": true, "weight": 3}
+            ).addTo(map_68440c38573f531d6fc4d547eb5124fc);
+        
+    
+        var popup_a309b64cb1c32601257f39859c6f7dca = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c4f62af0342af4eaba03ad0643ded86c = $(`<div id="html_c4f62af0342af4eaba03ad0643ded86c" style="width: 100.0%; height: 100.0%;">         <b>Vinnytska oblast</b><br>         Onset ROC-AUC: 0.673<br>         Onset PR-AUC: 0.131<br>         Signal Lift: 2.5x<br>         Defense F2: 0.314         </div>`)[0];
+                popup_a309b64cb1c32601257f39859c6f7dca.setContent(html_c4f62af0342af4eaba03ad0643ded86c);
+            
+        
+
+        circle_marker_dd1ec8d7886f1601f2700c1c33bf3a0c.bindPopup(popup_a309b64cb1c32601257f39859c6f7dca)
+        ;
+
+        
+    
+    
+            circle_marker_dd1ec8d7886f1601f2700c1c33bf3a0c.bindTooltip(
+                `<div>
+                     Vinnytska oblast: 0.673 ROC-AUC (2.5x Lift)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8b4b82da7f5475540c3cda67e2e88e74 = L.circleMarker(
+                [50.7472, 25.3254],
+                {"bubblingMouseEvents": true, "color": "#2980b9", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980b9", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.504550264550264, "stroke": true, "weight": 3}
+            ).addTo(map_68440c38573f531d6fc4d547eb5124fc);
+        
+    
+        var popup_f3917e6b5387ad2ab9b3344abd2be62d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_55b34fc6407f96c8fd95f1c790cc485c = $(`<div id="html_55b34fc6407f96c8fd95f1c790cc485c" style="width: 100.0%; height: 100.0%;">         <b>Volynska oblast</b><br>         Onset ROC-AUC: 0.813<br>         Onset PR-AUC: 0.078<br>         Signal Lift: 9.1x<br>         Defense F2: 0.222         </div>`)[0];
+                popup_f3917e6b5387ad2ab9b3344abd2be62d.setContent(html_55b34fc6407f96c8fd95f1c790cc485c);
+            
+        
+
+        circle_marker_8b4b82da7f5475540c3cda67e2e88e74.bindPopup(popup_f3917e6b5387ad2ab9b3344abd2be62d)
+        ;
+
+        
+    
+    
+            circle_marker_8b4b82da7f5475540c3cda67e2e88e74.bindTooltip(
+                `<div>
+                     Volynska oblast: 0.813 ROC-AUC (9.1x Lift)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e6320ef11a481be5249a9064dd480125 = L.circleMarker(
+                [48.6208, 22.2879],
+                {"bubblingMouseEvents": true, "color": "#2980b9", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980b9", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.561993769470405, "stroke": true, "weight": 3}
+            ).addTo(map_68440c38573f531d6fc4d547eb5124fc);
+        
+    
+        var popup_1b8fc83efb77f7751d519d5b91c4b604 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_665ef1afd7e3c1fcc921928b7e50af04 = $(`<div id="html_665ef1afd7e3c1fcc921928b7e50af04" style="width: 100.0%; height: 100.0%;">         <b>Zakarpatska oblast</b><br>         Onset ROC-AUC: 0.820<br>         Onset PR-AUC: 0.338<br>         Signal Lift: 120.8x<br>         Defense F2: 0.385         </div>`)[0];
+                popup_1b8fc83efb77f7751d519d5b91c4b604.setContent(html_665ef1afd7e3c1fcc921928b7e50af04);
+            
+        
+
+        circle_marker_e6320ef11a481be5249a9064dd480125.bindPopup(popup_1b8fc83efb77f7751d519d5b91c4b604)
+        ;
+
+        
+    
+    
+            circle_marker_e6320ef11a481be5249a9064dd480125.bindTooltip(
+                `<div>
+                     Zakarpatska oblast: 0.820 ROC-AUC (120.8x Lift)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2ab9de44f2170a36562134fa6c812012 = L.circleMarker(
+                [47.8388, 35.1396],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.266666666666666, "stroke": true, "weight": 3}
+            ).addTo(map_68440c38573f531d6fc4d547eb5124fc);
+        
+    
+        var popup_7d561579f1b5472b347893112ed7d8bf = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_087964d7e8cda5f9c7b29de36973c138 = $(`<div id="html_087964d7e8cda5f9c7b29de36973c138" style="width: 100.0%; height: 100.0%;">         <b>Zaporizka oblast</b><br>         Onset ROC-AUC: 0.533<br>         Onset PR-AUC: 0.705<br>         Signal Lift: 1.1x<br>         Defense F2: 0.893         </div>`)[0];
+                popup_7d561579f1b5472b347893112ed7d8bf.setContent(html_087964d7e8cda5f9c7b29de36973c138);
+            
+        
+
+        circle_marker_2ab9de44f2170a36562134fa6c812012.bindPopup(popup_7d561579f1b5472b347893112ed7d8bf)
+        ;
+
+        
+    
+    
+            circle_marker_2ab9de44f2170a36562134fa6c812012.bindTooltip(
+                `<div>
+                     Zaporizka oblast: 0.533 ROC-AUC (1.1x Lift)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2e8b243c3e62ef528405c84319d1fc56 = L.circleMarker(
+                [50.2547, 28.6587],
+                {"bubblingMouseEvents": true, "color": "#e67e22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e67e22", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.002421307506054, "stroke": true, "weight": 3}
+            ).addTo(map_68440c38573f531d6fc4d547eb5124fc);
+        
+    
+        var popup_933d6192d43ed743745c1e5ec37dc211 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4e36ed43822107b29a4e59111b98244c = $(`<div id="html_4e36ed43822107b29a4e59111b98244c" style="width: 100.0%; height: 100.0%;">         <b>Zhytomyrska oblast</b><br>         Onset ROC-AUC: 0.625<br>         Onset PR-AUC: 0.104<br>         Signal Lift: 1.7x<br>         Defense F2: 0.305         </div>`)[0];
+                popup_933d6192d43ed743745c1e5ec37dc211.setContent(html_4e36ed43822107b29a4e59111b98244c);
+            
+        
+
+        circle_marker_2e8b243c3e62ef528405c84319d1fc56.bindPopup(popup_933d6192d43ed743745c1e5ec37dc211)
+        ;
+
+        
+    
+    
+            circle_marker_2e8b243c3e62ef528405c84319d1fc56.bindTooltip(
+                `<div>
+                     Zhytomyrska oblast: 0.625 ROC-AUC (1.7x Lift)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>

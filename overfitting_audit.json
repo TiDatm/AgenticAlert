@@ -1,0 +1,198 @@
+{
+  "overfitting_reports": {
+    "1h": {
+      "train_metrics": {
+        "accuracy": 0.9191457218650241,
+        "pr_auc": 0.950595980077836,
+        "roc_auc": 0.9669596676368529,
+        "brier_score": 0.06303014422073042,
+        "f2_score": 0.8975331040645563,
+        "best_threshold": 0.22499999999999998,
+        "prevalence": 0.34555820331819614,
+        "prec_at_80_recall": 0.9317964137195233
+      },
+      "test_metrics": {
+        "accuracy": 0.9382423681776133,
+        "pr_auc": 0.9775946534048149,
+        "roc_auc": 0.9810810451867634,
+        "brier_score": 0.05042582111817547,
+        "f2_score": 0.9426883260628948,
+        "best_threshold": 0.25,
+        "prevalence": 0.442627197039778,
+        "prec_at_80_recall": 0.9667643196282453
+      },
+      "gaps": {
+        "pr_auc_gap": -0.026998673326978917,
+        "roc_auc_gap": -0.014121377549910497,
+        "brier_gap": -0.012604323102554944,
+        "f2_gap": -0.045155221998338435
+      },
+      "is_overfitted": false,
+      "verdict": "PASS: Well Generalizing"
+    },
+    "4h": {
+      "train_metrics": {
+        "accuracy": 0.8651877163796592,
+        "pr_auc": 0.9379483366417277,
+        "roc_auc": 0.9381176293133109,
+        "brier_score": 0.09630697501199287,
+        "f2_score": 0.8831467676954737,
+        "best_threshold": 0.15,
+        "prevalence": 0.451091227912414,
+        "prec_at_80_recall": 0.8902208537786493
+      },
+      "test_metrics": {
+        "accuracy": 0.9187419056429232,
+        "pr_auc": 0.9773210968878094,
+        "roc_auc": 0.9727744646405457,
+        "brier_score": 0.062432674075776795,
+        "f2_score": 0.9334532374100719,
+        "best_threshold": 0.175,
+        "prevalence": 0.5134875115633672,
+        "prec_at_80_recall": 0.9787534162038262
+      },
+      "gaps": {
+        "pr_auc_gap": -0.03937276024608172,
+        "roc_auc_gap": -0.03465683532723485,
+        "brier_gap": -0.03387430093621607,
+        "f2_gap": -0.05030646971459818
+      },
+      "is_overfitted": false,
+      "verdict": "PASS: Well Generalizing"
+    },
+    "24h": {
+      "train_metrics": {
+        "accuracy": 0.8456670113753878,
+        "pr_auc": 0.9693182640378806,
+        "roc_auc": 0.922554679294531,
+        "brier_score": 0.10395092768190727,
+        "f2_score": 0.9361448201644322,
+        "best_threshold": 0.175,
+        "prevalence": 0.7094087496065824,
+        "prec_at_80_recall": 0.9508426416129061
+      },
+      "test_metrics": {
+        "accuracy": 0.896577243293247,
+        "pr_auc": 0.9791571902921283,
+        "roc_auc": 0.9592000332439987,
+        "brier_score": 0.0796921942872975,
+        "f2_score": 0.9368654337430948,
+        "best_threshold": 0.22499999999999998,
+        "prevalence": 0.6470675300647548,
+        "prec_at_80_recall": 0.9692392961064155
+      },
+      "gaps": {
+        "pr_auc_gap": -0.00983892625424776,
+        "roc_auc_gap": -0.03664535394946766,
+        "brier_gap": -0.024258733394609766,
+        "f2_gap": -0.0007206135786625989
+      },
+      "is_overfitted": false,
+      "verdict": "PASS: Well Generalizing"
+    }
+  },
+  "stratified_reports": {
+    "1h": {
+      "overall": {
+        "accuracy": 0.9382423681776133,
+        "pr_auc": 0.9775946534048149,
+        "roc_auc": 0.9810810451867634,
+        "brier_score": 0.05042582111817547,
+        "f2_score": 0.9426883260628948,
+        "best_threshold": 0.25,
+        "prevalence": 0.442627197039778,
+        "prec_at_80_recall": 0.9667643196282453
+      },
+      "onset_early_warning": {
+        "accuracy": 0.9426958831341301,
+        "pr_auc": 0.2754009744925136,
+        "roc_auc": 0.8737178256546374,
+        "brier_score": 0.04699496116932871,
+        "f2_score": 0.4799735187024164,
+        "best_threshold": 0.175,
+        "prevalence": 0.05471447543160691,
+        "prec_at_80_recall": 0.17667560321715817,
+        "pr_lift_over_prevalence": 5.033420723127736
+      },
+      "continuation": {
+        "accuracy": 0.9326368575010447,
+        "pr_auc": 0.9885963153201329,
+        "roc_auc": 0.8643845497282308,
+        "brier_score": 0.05474414546666124,
+        "f2_score": 0.9856450014160294,
+        "best_threshold": 0.44999999999999996,
+        "prevalence": 0.9308817384036774,
+        "prec_at_80_recall": 0.9753694581280788
+      },
+      "brier_skill_score": 0.1745864412318603
+    },
+    "4h": {
+      "overall": {
+        "accuracy": 0.9187419056429232,
+        "pr_auc": 0.9773210968878094,
+        "roc_auc": 0.9727744646405457,
+        "brier_score": 0.062432674075776795,
+        "f2_score": 0.9334532374100719,
+        "best_threshold": 0.175,
+        "prevalence": 0.5134875115633672,
+        "prec_at_80_recall": 0.9787534162038262
+      },
+      "onset_early_warning": {
+        "accuracy": 0.8796148738379814,
+        "pr_auc": 0.587738401819304,
+        "roc_auc": 0.8772448887289367,
+        "brier_score": 0.09003085720087901,
+        "f2_score": 0.686393057827726,
+        "best_threshold": 0.175,
+        "prevalence": 0.15358565737051794,
+        "prec_at_80_recall": 0.4207414146008642,
+        "pr_lift_over_prevalence": 3.826779218071214
+      },
+      "continuation": {
+        "accuracy": 0.9679899707480151,
+        "pr_auc": 0.9962066639133584,
+        "roc_auc": 0.9020744144481413,
+        "brier_score": 0.027695637898255736,
+        "f2_score": 0.9932654148126514,
+        "best_threshold": 0.35,
+        "prevalence": 0.9664855829502716,
+        "prec_at_80_recall": 0.9929161747343566
+      },
+      "brier_skill_score": 0.7539224559923694
+    },
+    "24h": {
+      "overall": {
+        "accuracy": 0.896577243293247,
+        "pr_auc": 0.9791571902921283,
+        "roc_auc": 0.9592000332439987,
+        "brier_score": 0.0796921942872975,
+        "f2_score": 0.9368654337430948,
+        "best_threshold": 0.22499999999999998,
+        "prevalence": 0.6470675300647548,
+        "prec_at_80_recall": 0.9692392961064155
+      },
+      "onset_early_warning": {
+        "accuracy": 0.8205843293492696,
+        "pr_auc": 0.8169419906132239,
+        "roc_auc": 0.8827724717211429,
+        "brier_score": 0.1379889218071647,
+        "f2_score": 0.8230427073936981,
+        "best_threshold": 0.22499999999999998,
+        "prevalence": 0.37290836653386455,
+        "prec_at_80_recall": 0.7248668710666452,
+        "pr_lift_over_prevalence": 2.1907311927769144
+      },
+      "continuation": {
+        "accuracy": 0.9922273297116591,
+        "pr_auc": 0.9995820563124789,
+        "roc_auc": 0.9543102536666327,
+        "brier_score": 0.0063157867278156535,
+        "f2_score": 0.9984356075898264,
+        "best_threshold": 0.32499999999999996,
+        "prevalence": 0.9921437526117843,
+        "prec_at_80_recall": 0.9991582491582491
+      },
+      "brier_skill_score": 0.6568800984912828
+    }
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "1h": {
+    "baseline": {
+      "pr_auc": 0.9462436116512943,
+      "roc_auc": 0.9381062281548521,
+      "brier_score": 0.0610915832221508,
+      "f2_score": 0.9310684968150736,
+      "best_threshold": 0.05
+    },
+    "logistic_regression": {
+      "pr_auc": 0.9706450170452346,
+      "roc_auc": 0.9770104695318398,
+      "brier_score": 0.05713925427276329,
+      "f2_score": 0.9399338961973951,
+      "best_threshold": 0.37499999999999994
+    },
+    "lightgbm": {
+      "pr_auc": 0.9774992055068275,
+      "roc_auc": 0.98101285363331,
+      "brier_score": 0.050484996840241894,
+      "f2_score": 0.942774368906756,
+      "best_threshold": 0.25
+    },
+    "top_features": [
+      {
+        "feature": "active_hours_7d",
+        "importance": 785
+      },
+      {
+        "feature": "cos_hour",
+        "importance": 554
+      },
+      {
+        "feature": "sin_hour",
+        "importance": 429
+      },
+      {
+        "feature": "national_ratio",
+        "importance": 409
+      },
+      {
+        "feature": "neighbor_ratio",
+        "importance": 352
+      }
+    ]
+  },
+  "4h": {
+    "baseline": {
+      "pr_auc": 0.7567437557816836,
+      "roc_auc": 0.5,
+      "brier_score": 0.2537009372486833,
+      "f2_score": 0.8406940254201349,
+      "best_threshold": 0.05
+    },
+    "logistic_regression": {
+      "pr_auc": 0.9739673623764121,
+      "roc_auc": 0.9691938900855201,
+      "brier_score": 0.06901382023866794,
+      "f2_score": 0.9319794129920712,
+      "best_threshold": 0.2
+    },
+    "lightgbm": {
+      "pr_auc": 0.9774836137183096,
+      "roc_auc": 0.9730515880766434,
+      "brier_score": 0.062209855863302244,
+      "f2_score": 0.9342263675740006,
+      "best_threshold": 0.175
+    },
+    "top_features": [
+      {
+        "feature": "active_hours_7d",
+        "importance": 849
+      },
+      {
+        "feature": "cos_hour",
+        "importance": 440
+      },
+      {
+        "feature": "sin_hour",
+        "importance": 421
+      },
+      {
+        "feature": "national_ratio",
+        "importance": 380
+      },
+      {
+        "feature": "region_idx",
+        "importance": 357
+      }
+    ]
+  },
+  "24h": {
+    "baseline": {
+      "pr_auc": 0.8235337650323774,
+      "roc_auc": 0.5,
+      "brier_score": 0.23224460781226194,
+      "f2_score": 0.9016427252946696,
+      "best_threshold": 0.05
+    },
+    "logistic_regression": {
+      "pr_auc": 0.9733244229174921,
+      "roc_auc": 0.9479781421787216,
+      "brier_score": 0.08939994812148898,
+      "f2_score": 0.9263130970518566,
+      "best_threshold": 0.15
+    },
+    "lightgbm": {
+      "pr_auc": 0.9791307259213315,
+      "roc_auc": 0.9590585298106542,
+      "brier_score": 0.0797601845729401,
+      "f2_score": 0.9364746029662685,
+      "best_threshold": 0.22499999999999998
+    },
+    "top_features": [
+      {
+        "feature": "active_hours_7d",
+        "importance": 936
+      },
+      {
+        "feature": "region_idx",
+        "importance": 753
+      },
+      {
+        "feature": "active_hours_24h",
+        "importance": 495
+      },
+      {
+        "feature": "dayofweek",
+        "importance": 444
+      },
+      {
+        "feature": "national_ratio",
+        "importance": 296
+      }
+    ]
+  }
+}

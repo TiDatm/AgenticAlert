@@ -1,0 +1,5 @@
+{
+  "summary": "In-depth Machine Learning research report investigating why the training loss plateaus at ~0.24, mathematically deriving the compound multi-task Bayes prior floor, dissecting gradient conflict and batch size variance, and defining a principled roadmap to break the model's learning limit.",
+  "updatedAt": "2026-10-12T15:36:08.153985700Z",
+  "userFacing": true
+}

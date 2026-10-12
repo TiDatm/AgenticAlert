@@ -1,0 +1,1388 @@
+{
+  "tactical_flags": {
+    "flag_mig31k": 0.0,
+    "flag_ballistics": 0.0,
+    "flag_strat_aviation": 0.0,
+    "flag_shahed_group": 0.0,
+    "flag_kab_tactical": 0.0,
+    "flag_clearance": 0.0
+  },
+  "region_forecasts": {
+    "Вінницька область": {
+      "tactical_onset_prob_1h": 0.4399999976158142,
+      "operational_corridor_prob_4h": 0.4690000116825104,
+      "expected_daily_alert_hours_24h": 11.90999984741211,
+      "status": "NORMAL"
+    },
+    "Волинська область": {
+      "tactical_onset_prob_1h": 0.4359999895095825,
+      "operational_corridor_prob_4h": 0.4690000116825104,
+      "expected_daily_alert_hours_24h": 11.880000114440918,
+      "status": "NORMAL"
+    },
+    "Дніпропетровська область": {
+      "tactical_onset_prob_1h": 0.4449999928474426,
+      "operational_corridor_prob_4h": 0.4699999988079071,
+      "expected_daily_alert_hours_24h": 11.930000305175781,
+      "status": "NORMAL"
+    },
+    "Донецька область": {
+      "tactical_onset_prob_1h": 0.4440000057220459,
+      "operational_corridor_prob_4h": 0.4699999988079071,
+      "expected_daily_alert_hours_24h": 11.930000305175781,
+      "status": "NORMAL"
+    },
+    "Житомирська область": {
+      "tactical_onset_prob_1h": 0.4390000104904175,
+      "operational_corridor_prob_4h": 0.4690000116825104,
+      "expected_daily_alert_hours_24h": 11.899999618530273,
+      "status": "NORMAL"
+    },
+    "Закарпатська область": {
+      "tactical_onset_prob_1h": 0.4359999895095825,
+      "operational_corridor_prob_4h": 0.4690000116825104,
+      "expected_daily_alert_hours_24h": 11.880000114440918,
+      "status": "NORMAL"
+    },
+    "Запорізька область": {
+      "tactical_onset_prob_1h": 0.4449999928474426,
+      "operational_corridor_prob_4h": 0.4699999988079071,
+      "expected_daily_alert_hours_24h": 11.930000305175781,
+      "status": "NORMAL"
+    },
+    "Івано-Франківська область": {
+      "tactical_onset_prob_1h": 0.4359999895095825,
+      "operational_corridor_prob_4h": 0.4690000116825104,
+      "expected_daily_alert_hours_24h": 11.880000114440918,
+      "status": "NORMAL"
+    },
+    "Київська область": {
+      "tactical_onset_prob_1h": 0.44200000166893005,
+      "operational_corridor_prob_4h": 0.4699999988079071,
+      "expected_daily_alert_hours_24h": 11.920000076293945,
+      "status": "NORMAL"
+    },
+    "м. Київ": {
+      "tactical_onset_prob_1h": 0.4410000145435333,
+      "operational_corridor_prob_4h": 0.4699999988079071,
+      "expected_daily_alert_hours_24h": 11.90999984741211,
+      "status": "NORMAL"
+    },
+    "Кіровоградська область": {
+      "tactical_onset_prob_1h": 0.4429999887943268,
+      "operational_corridor_prob_4h": 0.4699999988079071,
+      "expected_daily_alert_hours_24h": 11.920000076293945,
+      "status": "NORMAL"
+    },
+    "Луганська область": {
+      "tactical_onset_prob_1h": 0.4429999887943268,
+      "operational_corridor_prob_4h": 0.4699999988079071,
+      "expected_daily_alert_hours_24h": 11.930000305175781,
+      "status": "NORMAL"
+    },
+    "Львівська область": {
+      "tactical_onset_prob_1h": 0.4359999895095825,
+      "operational_corridor_prob_4h": 0.4690000116825104,
+      "expected_daily_alert_hours_24h": 11.880000114440918,
+      "status": "NORMAL"
+    },
+    "Миколаївська область": {
+      "tactical_onset_prob_1h": 0.4429999887943268,
+      "operational_corridor_prob_4h": 0.4699999988079071,
+      "expected_daily_alert_hours_24h": 11.930000305175781,
+      "status": "NORMAL"
+    },
+    "Одеська область": {
+      "tactical_onset_prob_1h": 0.44200000166893005,
+      "operational_corridor_prob_4h": 0.4699999988079071,
+      "expected_daily_alert_hours_24h": 11.920000076293945,
+      "status": "NORMAL"
+    },
+    "Полтавська область": {
+      "tactical_onset_prob_1h": 0.4449999928474426,
+      "operational_corridor_prob_4h": 0.4699999988079071,
+      "expected_daily_alert_hours_24h": 11.930000305175781,
+      "status": "NORMAL"
+    },
+    "Рівненська область": {
+      "tactical_onset_prob_1h": 0.43700000643730164,
+      "operational_corridor_prob_4h": 0.4690000116825104,
+      "expected_daily_alert_hours_24h": 11.890000343322754,
+      "status": "NORMAL"
+    },
+    "Сумська область": {
+      "tactical_onset_prob_1h": 0.4449999928474426,
+      "operational_corridor_prob_4h": 0.4699999988079071,
+      "expected_daily_alert_hours_24h": 11.930000305175781,
+      "status": "NORMAL"
+    },
+    "Тернопільська область": {
+      "tactical_onset_prob_1h": 0.43700000643730164,
+      "operational_corridor_prob_4h": 0.4690000116825104,
+      "expected_daily_alert_hours_24h": 11.880000114440918,
+      "status": "NORMAL"
+    },
+    "Харківська область": {
+      "tactical_onset_prob_1h": 0.4449999928474426,
+      "operational_corridor_prob_4h": 0.4699999988079071,
+      "expected_daily_alert_hours_24h": 11.930000305175781,
+      "status": "NORMAL"
+    },
+    "Херсонська область": {
+      "tactical_onset_prob_1h": 0.4440000057220459,
+      "operational_corridor_prob_4h": 0.4699999988079071,
+      "expected_daily_alert_hours_24h": 11.930000305175781,
+      "status": "NORMAL"
+    },
+    "Хмельницька область": {
+      "tactical_onset_prob_1h": 0.43799999356269836,
+      "operational_corridor_prob_4h": 0.4690000116825104,
+      "expected_daily_alert_hours_24h": 11.890000343322754,
+      "status": "NORMAL"
+    },
+    "Черкаська область": {
+      "tactical_onset_prob_1h": 0.4429999887943268,
+      "operational_corridor_prob_4h": 0.4699999988079071,
+      "expected_daily_alert_hours_24h": 11.920000076293945,
+      "status": "NORMAL"
+    },
+    "Чернівецька область": {
+      "tactical_onset_prob_1h": 0.43700000643730164,
+      "operational_corridor_prob_4h": 0.4690000116825104,
+      "expected_daily_alert_hours_24h": 11.890000343322754,
+      "status": "NORMAL"
+    },
+    "Чернігівська область": {
+      "tactical_onset_prob_1h": 0.44200000166893005,
+      "operational_corridor_prob_4h": 0.4699999988079071,
+      "expected_daily_alert_hours_24h": 11.920000076293945,
+      "status": "NORMAL"
+    }
+  },
+  "raion_forecasts": {
+    "Вінницький район": {
+      "id": 0,
+      "parent_oblast": "Вінницька область",
+      "isochrone_onset_prob": 0.466,
+      "time_to_impact_hours": 3.29,
+      "tau_hours": 3.65,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Гайсинський район": {
+      "id": 1,
+      "parent_oblast": "Вінницька область",
+      "isochrone_onset_prob": 0.462,
+      "time_to_impact_hours": 3.28,
+      "tau_hours": 3.11,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Жмеринський район": {
+      "id": 2,
+      "parent_oblast": "Вінницька область",
+      "isochrone_onset_prob": 0.466,
+      "time_to_impact_hours": 3.3,
+      "tau_hours": 3.74,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Могилів-Подільський район": {
+      "id": 3,
+      "parent_oblast": "Вінницька область",
+      "isochrone_onset_prob": 0.466,
+      "time_to_impact_hours": 3.3,
+      "tau_hours": 3.7,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Тульчинський район": {
+      "id": 4,
+      "parent_oblast": "Вінницька область",
+      "isochrone_onset_prob": 0.464,
+      "time_to_impact_hours": 3.29,
+      "tau_hours": 3.29,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Хмільницький район": {
+      "id": 5,
+      "parent_oblast": "Вінницька область",
+      "isochrone_onset_prob": 0.467,
+      "time_to_impact_hours": 3.3,
+      "tau_hours": 3.98,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Луцький район": {
+      "id": 6,
+      "parent_oblast": "Волинська область",
+      "isochrone_onset_prob": 0.475,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 5.54,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Володимир-Волинський район": {
+      "id": 7,
+      "parent_oblast": "Волинська область",
+      "isochrone_onset_prob": 0.476,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 6.0,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Камінь-Каширський район": {
+      "id": 8,
+      "parent_oblast": "Волинська область",
+      "isochrone_onset_prob": 0.476,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 5.85,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Ковельський район": {
+      "id": 9,
+      "parent_oblast": "Волинська область",
+      "isochrone_onset_prob": 0.476,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 5.97,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Дніпровський район": {
+      "id": 10,
+      "parent_oblast": "Дніпропетровська область",
+      "isochrone_onset_prob": 0.449,
+      "time_to_impact_hours": 3.18,
+      "tau_hours": 1.12,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Кам’янський район": {
+      "id": 11,
+      "parent_oblast": "Дніпропетровська область",
+      "isochrone_onset_prob": 0.45,
+      "time_to_impact_hours": 3.19,
+      "tau_hours": 1.36,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Криворізький район": {
+      "id": 12,
+      "parent_oblast": "Дніпропетровська область",
+      "isochrone_onset_prob": 0.451,
+      "time_to_impact_hours": 3.22,
+      "tau_hours": 1.62,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Нікопольський район": {
+      "id": 13,
+      "parent_oblast": "Дніпропетровська область",
+      "isochrone_onset_prob": 0.45,
+      "time_to_impact_hours": 3.2,
+      "tau_hours": 1.46,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Павлоградський район": {
+      "id": 14,
+      "parent_oblast": "Дніпропетровська область",
+      "isochrone_onset_prob": 0.449,
+      "time_to_impact_hours": 3.16,
+      "tau_hours": 0.69,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Самарівський район": {
+      "id": 15,
+      "parent_oblast": "Дніпропетровська область",
+      "isochrone_onset_prob": 0.449,
+      "time_to_impact_hours": 3.18,
+      "tau_hours": 1.05,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Синельниківський район": {
+      "id": 16,
+      "parent_oblast": "Дніпропетровська область",
+      "isochrone_onset_prob": 0.449,
+      "time_to_impact_hours": 3.17,
+      "tau_hours": 0.85,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Краматорський район": {
+      "id": 17,
+      "parent_oblast": "Донецька область",
+      "isochrone_onset_prob": 0.449,
+      "time_to_impact_hours": 3.14,
+      "tau_hours": 0.52,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Бахмутський район": {
+      "id": 18,
+      "parent_oblast": "Донецька область",
+      "isochrone_onset_prob": 0.449,
+      "time_to_impact_hours": 3.15,
+      "tau_hours": 0.65,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Волноваський район": {
+      "id": 19,
+      "parent_oblast": "Донецька область",
+      "isochrone_onset_prob": 0.45,
+      "time_to_impact_hours": 3.13,
+      "tau_hours": 0.5,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Горлівський район": {
+      "id": 20,
+      "parent_oblast": "Донецька область",
+      "isochrone_onset_prob": 0.449,
+      "time_to_impact_hours": 3.14,
+      "tau_hours": 0.61,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Донецький район": {
+      "id": 21,
+      "parent_oblast": "Донецька область",
+      "isochrone_onset_prob": 0.45,
+      "time_to_impact_hours": 3.13,
+      "tau_hours": 0.5,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Кальміуський район": {
+      "id": 22,
+      "parent_oblast": "Донецька область",
+      "isochrone_onset_prob": 0.45,
+      "time_to_impact_hours": 3.14,
+      "tau_hours": 0.62,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Маріупольський район": {
+      "id": 23,
+      "parent_oblast": "Донецька область",
+      "isochrone_onset_prob": 0.45,
+      "time_to_impact_hours": 3.14,
+      "tau_hours": 0.59,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Покровський район": {
+      "id": 24,
+      "parent_oblast": "Донецька область",
+      "isochrone_onset_prob": 0.45,
+      "time_to_impact_hours": 3.13,
+      "tau_hours": 0.5,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Житомирський район": {
+      "id": 25,
+      "parent_oblast": "Житомирська область",
+      "isochrone_onset_prob": 0.466,
+      "time_to_impact_hours": 3.3,
+      "tau_hours": 3.86,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Бердичівський район": {
+      "id": 26,
+      "parent_oblast": "Житомирська область",
+      "isochrone_onset_prob": 0.466,
+      "time_to_impact_hours": 3.3,
+      "tau_hours": 3.85,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Звягельський район": {
+      "id": 27,
+      "parent_oblast": "Житомирська область",
+      "isochrone_onset_prob": 0.47,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 4.4,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Коростенський район": {
+      "id": 28,
+      "parent_oblast": "Житомирська область",
+      "isochrone_onset_prob": 0.466,
+      "time_to_impact_hours": 3.3,
+      "tau_hours": 3.81,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Ужгородський район": {
+      "id": 29,
+      "parent_oblast": "Закарпатська область",
+      "isochrone_onset_prob": 0.475,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 6.0,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Берегівський район": {
+      "id": 30,
+      "parent_oblast": "Закарпатська область",
+      "isochrone_onset_prob": 0.476,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 6.0,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Мукачівський район": {
+      "id": 31,
+      "parent_oblast": "Закарпатська область",
+      "isochrone_onset_prob": 0.476,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 6.0,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Рахівський район": {
+      "id": 32,
+      "parent_oblast": "Закарпатська область",
+      "isochrone_onset_prob": 0.474,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 5.43,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Тячівський район": {
+      "id": 33,
+      "parent_oblast": "Закарпатська область",
+      "isochrone_onset_prob": 0.476,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 5.76,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Хустський район": {
+      "id": 34,
+      "parent_oblast": "Закарпатська область",
+      "isochrone_onset_prob": 0.476,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 5.93,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Запорізький район": {
+      "id": 35,
+      "parent_oblast": "Запорізька область",
+      "isochrone_onset_prob": 0.449,
+      "time_to_impact_hours": 3.18,
+      "tau_hours": 1.04,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Бердянський район": {
+      "id": 36,
+      "parent_oblast": "Запорізька область",
+      "isochrone_onset_prob": 0.449,
+      "time_to_impact_hours": 3.14,
+      "tau_hours": 0.7,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Василівський район": {
+      "id": 37,
+      "parent_oblast": "Запорізька область",
+      "isochrone_onset_prob": 0.449,
+      "time_to_impact_hours": 3.18,
+      "tau_hours": 1.01,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Мелітопольський район": {
+      "id": 38,
+      "parent_oblast": "Запорізька область",
+      "isochrone_onset_prob": 0.449,
+      "time_to_impact_hours": 3.18,
+      "tau_hours": 1.11,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Пологівський район": {
+      "id": 39,
+      "parent_oblast": "Запорізька область",
+      "isochrone_onset_prob": 0.449,
+      "time_to_impact_hours": 3.13,
+      "tau_hours": 0.51,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Івано-Франківський район": {
+      "id": 40,
+      "parent_oblast": "Івано-Франківська область",
+      "isochrone_onset_prob": 0.474,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 5.34,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Верховинський район": {
+      "id": 41,
+      "parent_oblast": "Івано-Франківська область",
+      "isochrone_onset_prob": 0.474,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 5.12,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Калуський район": {
+      "id": 42,
+      "parent_oblast": "Івано-Франківська область",
+      "isochrone_onset_prob": 0.475,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 5.55,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Коломийський район": {
+      "id": 43,
+      "parent_oblast": "Івано-Франківська область",
+      "isochrone_onset_prob": 0.473,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 5.09,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Косівський район": {
+      "id": 44,
+      "parent_oblast": "Івано-Франківська область",
+      "isochrone_onset_prob": 0.473,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 5.02,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Надвірнянський район": {
+      "id": 45,
+      "parent_oblast": "Івано-Франківська область",
+      "isochrone_onset_prob": 0.474,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 5.34,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Білоцерківський район": {
+      "id": 46,
+      "parent_oblast": "Київська область",
+      "isochrone_onset_prob": 0.461,
+      "time_to_impact_hours": 3.28,
+      "tau_hours": 3.13,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Бориспільський район": {
+      "id": 47,
+      "parent_oblast": "Київська область",
+      "isochrone_onset_prob": 0.46,
+      "time_to_impact_hours": 3.27,
+      "tau_hours": 2.6,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Броварський район": {
+      "id": 48,
+      "parent_oblast": "Київська область",
+      "isochrone_onset_prob": 0.46,
+      "time_to_impact_hours": 3.27,
+      "tau_hours": 2.67,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Бучанський район": {
+      "id": 49,
+      "parent_oblast": "Київська область",
+      "isochrone_onset_prob": 0.461,
+      "time_to_impact_hours": 3.28,
+      "tau_hours": 2.98,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Вишгородський район": {
+      "id": 50,
+      "parent_oblast": "Київська область",
+      "isochrone_onset_prob": 0.46,
+      "time_to_impact_hours": 3.28,
+      "tau_hours": 2.83,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Обухівський район": {
+      "id": 51,
+      "parent_oblast": "Київська область",
+      "isochrone_onset_prob": 0.46,
+      "time_to_impact_hours": 3.28,
+      "tau_hours": 2.81,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Фастівський район": {
+      "id": 52,
+      "parent_oblast": "Київська область",
+      "isochrone_onset_prob": 0.461,
+      "time_to_impact_hours": 3.28,
+      "tau_hours": 3.2,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Голосіївський район": {
+      "id": 53,
+      "parent_oblast": "м. Київ",
+      "isochrone_onset_prob": 0.46,
+      "time_to_impact_hours": 3.28,
+      "tau_hours": 2.84,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Дарницький район": {
+      "id": 54,
+      "parent_oblast": "м. Київ",
+      "isochrone_onset_prob": 0.46,
+      "time_to_impact_hours": 3.28,
+      "tau_hours": 2.75,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Деснянський район": {
+      "id": 55,
+      "parent_oblast": "м. Київ",
+      "isochrone_onset_prob": 0.46,
+      "time_to_impact_hours": 3.28,
+      "tau_hours": 2.78,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Дніпровський район (м. Київ)": {
+      "id": 56,
+      "parent_oblast": "м. Київ",
+      "isochrone_onset_prob": 0.46,
+      "time_to_impact_hours": 3.28,
+      "tau_hours": 2.78,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Оболонський район": {
+      "id": 57,
+      "parent_oblast": "м. Київ",
+      "isochrone_onset_prob": 0.46,
+      "time_to_impact_hours": 3.28,
+      "tau_hours": 2.84,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Печерський район": {
+      "id": 58,
+      "parent_oblast": "м. Київ",
+      "isochrone_onset_prob": 0.46,
+      "time_to_impact_hours": 3.28,
+      "tau_hours": 2.82,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Подільський район (м. Київ)": {
+      "id": 59,
+      "parent_oblast": "м. Київ",
+      "isochrone_onset_prob": 0.46,
+      "time_to_impact_hours": 3.28,
+      "tau_hours": 2.85,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Святошинський район": {
+      "id": 60,
+      "parent_oblast": "м. Київ",
+      "isochrone_onset_prob": 0.46,
+      "time_to_impact_hours": 3.28,
+      "tau_hours": 2.91,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Солом’янський район": {
+      "id": 61,
+      "parent_oblast": "м. Київ",
+      "isochrone_onset_prob": 0.46,
+      "time_to_impact_hours": 3.28,
+      "tau_hours": 2.86,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Шевченківський район (м. Київ)": {
+      "id": 62,
+      "parent_oblast": "м. Київ",
+      "isochrone_onset_prob": 0.46,
+      "time_to_impact_hours": 3.28,
+      "tau_hours": 2.84,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Кропивницький район": {
+      "id": 63,
+      "parent_oblast": "Кіровоградська область",
+      "isochrone_onset_prob": 0.454,
+      "time_to_impact_hours": 3.25,
+      "tau_hours": 2.06,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Голованівський район": {
+      "id": 64,
+      "parent_oblast": "Кіровоградська область",
+      "isochrone_onset_prob": 0.458,
+      "time_to_impact_hours": 3.27,
+      "tau_hours": 2.53,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Новоукраїнський район": {
+      "id": 65,
+      "parent_oblast": "Кіровоградська область",
+      "isochrone_onset_prob": 0.454,
+      "time_to_impact_hours": 3.25,
+      "tau_hours": 2.14,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Олександрійський район": {
+      "id": 66,
+      "parent_oblast": "Кіровоградська область",
+      "isochrone_onset_prob": 0.453,
+      "time_to_impact_hours": 3.24,
+      "tau_hours": 2.05,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Сєвєродонецький район": {
+      "id": 67,
+      "parent_oblast": "Луганська область",
+      "isochrone_onset_prob": 0.45,
+      "time_to_impact_hours": 3.17,
+      "tau_hours": 0.98,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Алчевський район": {
+      "id": 68,
+      "parent_oblast": "Луганська область",
+      "isochrone_onset_prob": 0.45,
+      "time_to_impact_hours": 3.18,
+      "tau_hours": 1.03,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Довжанський район": {
+      "id": 69,
+      "parent_oblast": "Луганська область",
+      "isochrone_onset_prob": 0.451,
+      "time_to_impact_hours": 3.21,
+      "tau_hours": 1.47,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Луганський район": {
+      "id": 70,
+      "parent_oblast": "Луганська область",
+      "isochrone_onset_prob": 0.45,
+      "time_to_impact_hours": 3.2,
+      "tau_hours": 1.32,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Ровеньківський район": {
+      "id": 71,
+      "parent_oblast": "Луганська область",
+      "isochrone_onset_prob": 0.45,
+      "time_to_impact_hours": 3.2,
+      "tau_hours": 1.3,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Сватівський район": {
+      "id": 72,
+      "parent_oblast": "Луганська область",
+      "isochrone_onset_prob": 0.45,
+      "time_to_impact_hours": 3.17,
+      "tau_hours": 1.01,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Старобільський район": {
+      "id": 73,
+      "parent_oblast": "Луганська область",
+      "isochrone_onset_prob": 0.45,
+      "time_to_impact_hours": 3.19,
+      "tau_hours": 1.27,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Щастинський район": {
+      "id": 74,
+      "parent_oblast": "Луганська область",
+      "isochrone_onset_prob": 0.45,
+      "time_to_impact_hours": 3.2,
+      "tau_hours": 1.3,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Львівський район": {
+      "id": 75,
+      "parent_oblast": "Львівська область",
+      "isochrone_onset_prob": 0.476,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 5.9,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Дрогобицький район": {
+      "id": 76,
+      "parent_oblast": "Львівська область",
+      "isochrone_onset_prob": 0.476,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 6.0,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Золочівський район": {
+      "id": 77,
+      "parent_oblast": "Львівська область",
+      "isochrone_onset_prob": 0.474,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 5.47,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Самбірський район": {
+      "id": 78,
+      "parent_oblast": "Львівська область",
+      "isochrone_onset_prob": 0.476,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 6.0,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Стрийський район": {
+      "id": 79,
+      "parent_oblast": "Львівська область",
+      "isochrone_onset_prob": 0.476,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 5.85,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Червоноградський район": {
+      "id": 80,
+      "parent_oblast": "Львівська область",
+      "isochrone_onset_prob": 0.476,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 5.95,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Яворівський район": {
+      "id": 81,
+      "parent_oblast": "Львівська область",
+      "isochrone_onset_prob": 0.476,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 6.0,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Миколаївський район": {
+      "id": 82,
+      "parent_oblast": "Миколаївська область",
+      "isochrone_onset_prob": 0.45,
+      "time_to_impact_hours": 3.2,
+      "tau_hours": 1.38,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Баштанський район": {
+      "id": 83,
+      "parent_oblast": "Миколаївська область",
+      "isochrone_onset_prob": 0.451,
+      "time_to_impact_hours": 3.2,
+      "tau_hours": 1.46,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Вознесенський район": {
+      "id": 84,
+      "parent_oblast": "Миколаївська область",
+      "isochrone_onset_prob": 0.453,
+      "time_to_impact_hours": 3.25,
+      "tau_hours": 1.86,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Первомайський район": {
+      "id": 85,
+      "parent_oblast": "Миколаївська область",
+      "isochrone_onset_prob": 0.455,
+      "time_to_impact_hours": 3.25,
+      "tau_hours": 2.24,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Одеський район": {
+      "id": 86,
+      "parent_oblast": "Одеська область",
+      "isochrone_onset_prob": 0.453,
+      "time_to_impact_hours": 3.24,
+      "tau_hours": 1.75,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Березівський район": {
+      "id": 87,
+      "parent_oblast": "Одеська область",
+      "isochrone_onset_prob": 0.453,
+      "time_to_impact_hours": 3.24,
+      "tau_hours": 1.89,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Білгород-Дністровський район": {
+      "id": 88,
+      "parent_oblast": "Одеська область",
+      "isochrone_onset_prob": 0.453,
+      "time_to_impact_hours": 3.24,
+      "tau_hours": 1.87,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Болградський район": {
+      "id": 89,
+      "parent_oblast": "Одеська область",
+      "isochrone_onset_prob": 0.459,
+      "time_to_impact_hours": 3.27,
+      "tau_hours": 2.74,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Ізмаїльський район": {
+      "id": 90,
+      "parent_oblast": "Одеська область",
+      "isochrone_onset_prob": 0.459,
+      "time_to_impact_hours": 3.27,
+      "tau_hours": 2.59,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Подільський район": {
+      "id": 91,
+      "parent_oblast": "Одеська область",
+      "isochrone_onset_prob": 0.46,
+      "time_to_impact_hours": 3.28,
+      "tau_hours": 2.68,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Роздільнянський район": {
+      "id": 92,
+      "parent_oblast": "Одеська область",
+      "isochrone_onset_prob": 0.454,
+      "time_to_impact_hours": 3.25,
+      "tau_hours": 2.16,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Полтавський район": {
+      "id": 93,
+      "parent_oblast": "Полтавська область",
+      "isochrone_onset_prob": 0.45,
+      "time_to_impact_hours": 3.19,
+      "tau_hours": 1.19,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Кременчуцький район": {
+      "id": 94,
+      "parent_oblast": "Полтавська область",
+      "isochrone_onset_prob": 0.452,
+      "time_to_impact_hours": 3.24,
+      "tau_hours": 1.78,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Лубенський район": {
+      "id": 95,
+      "parent_oblast": "Полтавська область",
+      "isochrone_onset_prob": 0.451,
+      "time_to_impact_hours": 3.23,
+      "tau_hours": 1.62,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Миргородський район": {
+      "id": 96,
+      "parent_oblast": "Полтавська область",
+      "isochrone_onset_prob": 0.45,
+      "time_to_impact_hours": 3.21,
+      "tau_hours": 1.35,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Рівненський район": {
+      "id": 97,
+      "parent_oblast": "Рівненська область",
+      "isochrone_onset_prob": 0.473,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 5.09,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Вараський район": {
+      "id": 98,
+      "parent_oblast": "Рівненська область",
+      "isochrone_onset_prob": 0.474,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 5.36,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Дубенський район": {
+      "id": 99,
+      "parent_oblast": "Рівненська область",
+      "isochrone_onset_prob": 0.474,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 5.25,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Сарненський район": {
+      "id": 100,
+      "parent_oblast": "Рівненська область",
+      "isochrone_onset_prob": 0.473,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 4.92,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Сумський район": {
+      "id": 101,
+      "parent_oblast": "Сумська область",
+      "isochrone_onset_prob": 0.449,
+      "time_to_impact_hours": 3.14,
+      "tau_hours": 0.51,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Конотопський район": {
+      "id": 102,
+      "parent_oblast": "Сумська область",
+      "isochrone_onset_prob": 0.451,
+      "time_to_impact_hours": 3.21,
+      "tau_hours": 1.28,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Охтирський район": {
+      "id": 103,
+      "parent_oblast": "Сумська область",
+      "isochrone_onset_prob": 0.449,
+      "time_to_impact_hours": 3.15,
+      "tau_hours": 0.74,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Роменський район": {
+      "id": 104,
+      "parent_oblast": "Сумська область",
+      "isochrone_onset_prob": 0.45,
+      "time_to_impact_hours": 3.2,
+      "tau_hours": 1.2,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Шосткинський район": {
+      "id": 105,
+      "parent_oblast": "Сумська область",
+      "isochrone_onset_prob": 0.45,
+      "time_to_impact_hours": 3.19,
+      "tau_hours": 1.14,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Тернопільський район": {
+      "id": 106,
+      "parent_oblast": "Тернопільська область",
+      "isochrone_onset_prob": 0.473,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 5.06,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Кременецький район": {
+      "id": 107,
+      "parent_oblast": "Тернопільська область",
+      "isochrone_onset_prob": 0.473,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 5.16,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Чортківський район": {
+      "id": 108,
+      "parent_oblast": "Тернопільська область",
+      "isochrone_onset_prob": 0.472,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 4.82,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Харківський район": {
+      "id": 109,
+      "parent_oblast": "Харківська область",
+      "isochrone_onset_prob": 0.449,
+      "time_to_impact_hours": 3.17,
+      "tau_hours": 0.93,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Богодухівський район": {
+      "id": 110,
+      "parent_oblast": "Харківська область",
+      "isochrone_onset_prob": 0.449,
+      "time_to_impact_hours": 3.16,
+      "tau_hours": 0.74,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Ізюмський район": {
+      "id": 111,
+      "parent_oblast": "Харківська область",
+      "isochrone_onset_prob": 0.45,
+      "time_to_impact_hours": 3.15,
+      "tau_hours": 0.68,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Красноградський район": {
+      "id": 112,
+      "parent_oblast": "Харківська область",
+      "isochrone_onset_prob": 0.449,
+      "time_to_impact_hours": 3.18,
+      "tau_hours": 1.15,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Куп’янський район": {
+      "id": 113,
+      "parent_oblast": "Харківська область",
+      "isochrone_onset_prob": 0.45,
+      "time_to_impact_hours": 3.16,
+      "tau_hours": 1.01,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Лозівський район": {
+      "id": 114,
+      "parent_oblast": "Харківська область",
+      "isochrone_onset_prob": 0.449,
+      "time_to_impact_hours": 3.14,
+      "tau_hours": 0.62,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Чугуївський район": {
+      "id": 115,
+      "parent_oblast": "Харківська область",
+      "isochrone_onset_prob": 0.449,
+      "time_to_impact_hours": 3.17,
+      "tau_hours": 1.04,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Херсонський район": {
+      "id": 116,
+      "parent_oblast": "Херсонська область",
+      "isochrone_onset_prob": 0.449,
+      "time_to_impact_hours": 3.18,
+      "tau_hours": 1.03,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Бериславський район": {
+      "id": 117,
+      "parent_oblast": "Херсонська область",
+      "isochrone_onset_prob": 0.449,
+      "time_to_impact_hours": 3.19,
+      "tau_hours": 1.02,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Генічеський район": {
+      "id": 118,
+      "parent_oblast": "Херсонська область",
+      "isochrone_onset_prob": 0.449,
+      "time_to_impact_hours": 3.17,
+      "tau_hours": 0.97,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Каховський район": {
+      "id": 119,
+      "parent_oblast": "Херсонська область",
+      "isochrone_onset_prob": 0.449,
+      "time_to_impact_hours": 3.18,
+      "tau_hours": 1.0,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Скадовський район": {
+      "id": 120,
+      "parent_oblast": "Херсонська область",
+      "isochrone_onset_prob": 0.449,
+      "time_to_impact_hours": 3.16,
+      "tau_hours": 0.7,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Хмельницький район": {
+      "id": 121,
+      "parent_oblast": "Хмельницька область",
+      "isochrone_onset_prob": 0.469,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 4.37,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Кам’янець-Подільський район": {
+      "id": 122,
+      "parent_oblast": "Хмельницька область",
+      "isochrone_onset_prob": 0.47,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 4.35,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Шепетівський район": {
+      "id": 123,
+      "parent_oblast": "Хмельницька область",
+      "isochrone_onset_prob": 0.471,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 4.59,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Черкаський район": {
+      "id": 124,
+      "parent_oblast": "Черкаська область",
+      "isochrone_onset_prob": 0.455,
+      "time_to_impact_hours": 3.25,
+      "tau_hours": 2.23,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Звенигородський район": {
+      "id": 125,
+      "parent_oblast": "Черкаська область",
+      "isochrone_onset_prob": 0.458,
+      "time_to_impact_hours": 3.27,
+      "tau_hours": 2.66,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Золотоніський район": {
+      "id": 126,
+      "parent_oblast": "Черкаська область",
+      "isochrone_onset_prob": 0.454,
+      "time_to_impact_hours": 3.25,
+      "tau_hours": 2.17,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Уманський район": {
+      "id": 127,
+      "parent_oblast": "Черкаська область",
+      "isochrone_onset_prob": 0.46,
+      "time_to_impact_hours": 3.28,
+      "tau_hours": 2.77,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Чернівецький район": {
+      "id": 128,
+      "parent_oblast": "Чернівецька область",
+      "isochrone_onset_prob": 0.472,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 4.58,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Вижницький район": {
+      "id": 129,
+      "parent_oblast": "Чернівецька область",
+      "isochrone_onset_prob": 0.473,
+      "time_to_impact_hours": 3.31,
+      "tau_hours": 4.96,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Дністровський район": {
+      "id": 130,
+      "parent_oblast": "Чернівецька область",
+      "isochrone_onset_prob": 0.469,
+      "time_to_impact_hours": 3.3,
+      "tau_hours": 4.17,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Чернігівський район": {
+      "id": 131,
+      "parent_oblast": "Чернігівська область",
+      "isochrone_onset_prob": 0.455,
+      "time_to_impact_hours": 3.25,
+      "tau_hours": 2.33,
+      "is_capital": true,
+      "status": "NORMAL"
+    },
+    "Корюківський район": {
+      "id": 132,
+      "parent_oblast": "Чернігівська область",
+      "isochrone_onset_prob": 0.452,
+      "time_to_impact_hours": 3.23,
+      "tau_hours": 1.8,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Новгород-Сіверський район": {
+      "id": 133,
+      "parent_oblast": "Чернігівська область",
+      "isochrone_onset_prob": 0.45,
+      "time_to_impact_hours": 3.2,
+      "tau_hours": 1.27,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Ніжинський район": {
+      "id": 134,
+      "parent_oblast": "Чернігівська область",
+      "isochrone_onset_prob": 0.454,
+      "time_to_impact_hours": 3.24,
+      "tau_hours": 2.03,
+      "is_capital": false,
+      "status": "NORMAL"
+    },
+    "Прилуцький район": {
+      "id": 135,
+      "parent_oblast": "Чернігівська область",
+      "isochrone_onset_prob": 0.452,
+      "time_to_impact_hours": 3.23,
+      "tau_hours": 1.8,
+      "is_capital": false,
+      "status": "NORMAL"
+    }
+  }
+}

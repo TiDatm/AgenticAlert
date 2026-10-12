@@ -1,0 +1,152 @@
+[
+  {
+    "id": 0,
+    "title_uk": "м. Київ",
+    "title_en": "Kyiv City",
+    "code": "UA-30"
+  },
+  {
+    "id": 1,
+    "title_uk": "Київська область",
+    "title_en": "Kyiv Oblast",
+    "code": "UA-32"
+  },
+  {
+    "id": 2,
+    "title_uk": "Вінницька область",
+    "title_en": "Vinnytsia Oblast",
+    "code": "UA-05"
+  },
+  {
+    "id": 3,
+    "title_uk": "Волинська область",
+    "title_en": "Volyn Oblast",
+    "code": "UA-07"
+  },
+  {
+    "id": 4,
+    "title_uk": "Дніпропетровська область",
+    "title_en": "Dnipropetrovsk Oblast",
+    "code": "UA-12"
+  },
+  {
+    "id": 5,
+    "title_uk": "Донецька область",
+    "title_en": "Donetsk Oblast",
+    "code": "UA-14"
+  },
+  {
+    "id": 6,
+    "title_uk": "Житомирська область",
+    "title_en": "Zhytomyr Oblast",
+    "code": "UA-18"
+  },
+  {
+    "id": 7,
+    "title_uk": "Закарпатська область",
+    "title_en": "Zakarpattia Oblast",
+    "code": "UA-21"
+  },
+  {
+    "id": 8,
+    "title_uk": "Запорізька область",
+    "title_en": "Zaporizhzhia Oblast",
+    "code": "UA-23"
+  },
+  {
+    "id": 9,
+    "title_uk": "Івано-Франківська область",
+    "title_en": "Ivano-Frankivsk Oblast",
+    "code": "UA-26"
+  },
+  {
+    "id": 10,
+    "title_uk": "Кіровоградська область",
+    "title_en": "Kirovohrad Oblast",
+    "code": "UA-35"
+  },
+  {
+    "id": 11,
+    "title_uk": "Луганська область",
+    "title_en": "Luhansk Oblast",
+    "code": "UA-09"
+  },
+  {
+    "id": 12,
+    "title_uk": "Львівська область",
+    "title_en": "Lviv Oblast",
+    "code": "UA-46"
+  },
+  {
+    "id": 13,
+    "title_uk": "Миколаївська область",
+    "title_en": "Mykolaiv Oblast",
+    "code": "UA-48"
+  },
+  {
+    "id": 14,
+    "title_uk": "Одеська область",
+    "title_en": "Odesa Oblast",
+    "code": "UA-51"
+  },
+  {
+    "id": 15,
+    "title_uk": "Полтавська область",
+    "title_en": "Poltava Oblast",
+    "code": "UA-53"
+  },
+  {
+    "id": 16,
+    "title_uk": "Рівненська область",
+    "title_en": "Rivne Oblast",
+    "code": "UA-56"
+  },
+  {
+    "id": 17,
+    "title_uk": "Сумська область",
+    "title_en": "Sumy Oblast",
+    "code": "UA-59"
+  },
+  {
+    "id": 18,
+    "title_uk": "Тернопільська область",
+    "title_en": "Ternopil Oblast",
+    "code": "UA-61"
+  },
+  {
+    "id": 19,
+    "title_uk": "Харківська область",
+    "title_en": "Kharkiv Oblast",
+    "code": "UA-63"
+  },
+  {
+    "id": 20,
+    "title_uk": "Херсонська область",
+    "title_en": "Kherson Oblast",
+    "code": "UA-65"
+  },
+  {
+    "id": 21,
+    "title_uk": "Хмельницька область",
+    "title_en": "Khmelnytskyi Oblast",
+    "code": "UA-68"
+  },
+  {
+    "id": 22,
+    "title_uk": "Черкаська область",
+    "title_en": "Cherkasy Oblast",
+    "code": "UA-71"
+  },
+  {
+    "id": 23,
+    "title_uk": "Чернівецька область",
+    "title_en": "Chernivtsi Oblast",
+    "code": "UA-77"
+  },
+  {
+    "id": 24,
+    "title_uk": "Чернігівська область",
+    "title_en": "Chernihiv Oblast",
+    "code": "UA-74"
+  }
+]
